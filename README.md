@@ -3,10 +3,10 @@
 
 
 #### technologies in usage: 
-- *React Library* (Hooks Usage)
-- *shortid*
+- **React Library** (Hooks Usage)
+- **shortid**
 
-#### functionality:s
+#### functionality:
 - switching the theme from light to dark
 - closing the panel for the new task creation
 - deleting tasks
