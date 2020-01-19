@@ -1,0 +1,138 @@
+.checkbox {
+    display: none;
+}
+
+label {
+    font-weight: 600;
+    display: flex;
+}
+
+span {
+    word-wrap: break-word;
+}
+
+input, select {
+    border: none;
+    background-color: transparent;
+    font-size: 1.1rem;
+    font-style: italic;
+    border-bottom: 1px solid silver;
+    width: 90%;
+}
+
+input,select:focus {
+    outline: none;
+}
+
+.simple-button {
+    cursor: pointer;
+    border: none;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    padding: 10px 5px;
+}
+
+.simple-button:hover {
+    box-shadow: 2px 1px 5px silver;
+    transition: .1s;
+}
+
+.close-button {
+    cursor: pointer;
+    border: none;
+    font-size: 1.2rem;
+    padding: 10px 5px;
+}
+
+.radius {
+    border-radius: 10px;
+}
+
+
+button:focus {
+    outline: none;
+}
+
+.fake {
+    position: relative;
+    top: 7px;
+
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+
+.fake::before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    width: 35px;
+    height: 35px;
+    background-image: url("./checked.svg");
+    opacity: 0;
+
+}
+
+.checkbox:checked + .fake::before {
+    opacity: 1;
+}
+
+.checkbox:checked + .fake {
+    border: 1px solid skyblue;
+    transition: .5s;
+}
+
+
+.task-container {
+    border-bottom: 1px solid silver;
+    padding: 10px 0 10px 10px;
+    margin-bottom: 10px;
+}
+
+.task-container-upper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+
+.task-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 3px;
+    width: 210px;
+}
+
+.deadline {
+    margin-left: 30px;
+}
+
+.delete-button {
+    cursor: pointer;
+
+    background-color: transparent;
+    padding: 10px 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+    height: 40px;
+}
+
+.delete-button i {
+    font-size: 1.2rem;
+}
+
+.delete-button:hover {
+    background-color: red;
+    transition: .3s;
+}
+
+.checkbox-container {
+    margin-bottom: 5px;
+}

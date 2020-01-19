@@ -1,0 +1,36 @@
+.social-wrapper {
+	font-size: 12px;
+	height: 120px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
+.icon-box {
+	height: 70px;
+	width: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.social-wrapper .fa-stack {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.fa-instagram:before {
+	top: -1px;
+	position: relative;
+}
+
+.social-wrapper a {
+	transition: 0.2s ease-in;
+	opacity: 1;
+}
+
+.social-wrapper a:hover {
+	font-size: 2.8em;
+}
