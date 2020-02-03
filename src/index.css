@@ -42,8 +42,6 @@ code {
 
   margin-right: 50px;
   padding-bottom: 30px;
-  /*border-right: 2px solid silver;
-  border-bottom: 2px solid silver;*/
   border-bottom-right-radius: 20px;
   width: 20vw;
   background-color: #e8eaed;
@@ -67,7 +65,6 @@ code {
 
 .square {
   position: relative;
-  /*border: 1px solid silver;*/
   padding: 0 10px;
   border-radius: 10px;
 }
@@ -77,8 +74,6 @@ code {
   height: 260px;
   position: relative;
   overflow-y: scroll;
-  /*border-bottom: 1px solid skyblue;
-  border-top: 1px solid skyblue;*/
   padding: 5px 15px;
 }
 
@@ -96,8 +91,4 @@ code {
 footer {
   margin-bottom: 30px;
   margin-top: 30px;
-}
-
-footer div {
-  /*border-top: 1px solid silver;*/
 }

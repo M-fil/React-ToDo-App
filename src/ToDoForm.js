@@ -7,6 +7,7 @@ function ToDoForm (props) {
 
     const themeColor = theme.color;
     const themeBackgroundColor = theme.backgroundColor;
+    const borderColor = "1px solid " + theme.borderColor;
     
     return (
         <form 
@@ -23,7 +24,7 @@ function ToDoForm (props) {
                     ref = {props.textRef}
                     text = {props.text}
                     onChange = {props.TextHandleInput}
-                    style = {{color: themeColor}}
+                    style = {{color: themeColor, borderBottom: borderColor}}
 
                     required 
                     autoComplete = "off"
@@ -40,7 +41,7 @@ function ToDoForm (props) {
                     ref = {props.deadlineRef}
                     deadline = {props.deadline}
                     onChange = {props.deadlineHandleInput}
-                    style = {{color: themeColor}}
+                    style = {{color: themeColor, borderBottom: borderColor}}
                     min = {date.getFullYear() + "-0" + (date.getMonth() + 1) + "-" + date.getDate()}
 
                     required 
@@ -55,7 +56,7 @@ function ToDoForm (props) {
 
                     importance = {props.importance}
                     onChange = {props.importanceHandleInput}
-                    style = {{color: themeColor}} 
+                    style = {{color: themeColor, borderBottom: borderColor}} 
                 >
                     <option value = "I - Urgent Task">I - Urgent Task</option>
                     <option value = "II - Important">II - Important</option>

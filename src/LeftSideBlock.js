@@ -5,12 +5,15 @@ function LeftSideBlock(props) {
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
     const themeBackgroundColor = theme.backgroundColor;
+    const borderColor = "1px solid " + theme.borderColor;
 
     return (
         <div 
             id = "left-side" 
             style = {{
                 backgroundColor: themeBackgroundColor,
+                borderRight: borderColor,
+                borderBottom: borderColor,
             }}          
         >
             <button 
@@ -20,7 +23,6 @@ function LeftSideBlock(props) {
                 style = {{
                     backgroundColor: themeBackgroundColor,
                     color: themeColor,
-                    borderBottom: themeColor,
                 }}
             >
                 { props.isFormShown 
