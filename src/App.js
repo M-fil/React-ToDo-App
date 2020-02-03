@@ -14,7 +14,39 @@ const themes = {
   light: {
     color: "#e8eaed",
     backgroundColor: "rgb(40, 44, 52)",
-  }
+  },
+  red: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#f28b82",
+  },
+  orange: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#fbbc04",
+  },
+  yellow: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#fff475",
+  },
+  purple: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#d7aefb",
+  },
+  pink: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#fdcfe8",
+  },
+  blue: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#aecbfa",
+  },
+  skyblue: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#cbf0f8",
+  },
+  brown: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#e6c9a8",
+  },
 }
 
 export const ThemeContext = createContext(themes.light); 
