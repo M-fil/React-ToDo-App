@@ -24,7 +24,7 @@ function ToggleThemeButton(props) {
 
         {
             props.isShown 
-                ? <ThemeChangeWindow chooseTheme = {props.chooseTheme} />
+                ? <ThemeChangeWindow chooseTheme = {props.chooseTheme} isSelected = {props.isSelected} />
                 : null
         }
         </div>

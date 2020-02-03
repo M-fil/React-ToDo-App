@@ -20,7 +20,7 @@ const themes = {
   red: {
     color: "rgb(40, 44, 52)",
     backgroundColor: "#f28b82",
-    borderColor: "purple",
+    borderColor: "rgb(40, 44, 52)",
   },
   orange: {
     color: "rgb(40, 44, 52)",
@@ -75,7 +75,6 @@ function App () {
   }
   
   const chooseTheme = (event) => {
-    console.log(event.target.dataset.color)
     setTypeOfTheme(themes[`${event.target.dataset.color}`]);
   }
 

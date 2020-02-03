@@ -1,7 +1,8 @@
 .theme-change-window {
     position: absolute;
-    left: 35%;
     z-index: 200;
+    left: 33vw;
+    width: 30vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,4 +69,30 @@
 }
 .brown {
     background-color: #e6c9a8;
+}
+
+
+.list-of-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.list-of-images .item {
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.list-of-images .item img {
+    border: 4px solid transparent;
+}
+
+.list-of-images .item:hover img {
+    transition: .3s;
+    border: 4px solid lightgray;
+}
+
+.list-of-images .item img {
+    width: 100px;
+    height: 100px;
 }
