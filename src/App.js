@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 
 import ToDoForm from "./ToDoForm";
 import ToDoList from './ToDoList';
@@ -8,12 +8,12 @@ import LeftSideBlock from "./LeftSideBlock";
 
 const themes = {
   dark: {
-    color: "rgb(40, 44, 52)",
-    backgroundColor: "#e8eaed",
-  },
-  light: {
     color: "#e8eaed",
     backgroundColor: "rgb(40, 44, 52)",
+  },
+  light: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#e8eaed",
   },
   red: {
     color: "rgb(40, 44, 52)",
@@ -53,19 +53,25 @@ export const ThemeContext = createContext(themes.light);
 
 function App () {
   const [isFormShown, setIsFormShown] = useState(true);
-  const [isDark, setIsDark] = useState(false);
+  const [typeOfTheme, setTypeOfTheme] = useState(themes.light);
+  const [isShown, setIsShown] = useState(false);
 
   const showTaskForm = () => {
       setIsFormShown(!isFormShown);
   }
 
-  const changeTheme = () => {
-    setIsDark(!isDark);
-
-    isDark 
-      ? document.body.style.backgroundColor = themes.light.color
-      : document.body.style.backgroundColor = themes.dark.color;
+  const showThemeChangeBlock = () => {
+    setIsShown(!isShown);
   }
+  
+  const chooseTheme = (event) => {
+    console.log(event.target.dataset.color)
+    setTypeOfTheme(themes[`${event.target.dataset.color}`]);
+  }
+
+  useEffect(() => {
+    document.body.style.backgroundColor = typeOfTheme.backgroundColor;
+  }, [typeOfTheme]);
 
   const {
     taskData,
@@ -81,11 +87,11 @@ function App () {
     textRef,
     deadlineRef} = useToDo();
 
-    const themeColor = isDark ? themes.light.color : themes.dark.color;
+    const themeColor = typeOfTheme["color"];
     
   return (
       <div>
-        <ThemeContext.Provider value = {isDark ? themes.light : themes.dark}>
+        <ThemeContext.Provider value = {typeOfTheme}>
           <LeftSideBlock 
             showTaskForm = {showTaskForm}
             isFormShown = {isFormShown}
@@ -108,8 +114,9 @@ function App () {
 
           <div id = "squares">
             <ToggleThemeButton 
-              changeTheme = {changeTheme} 
-              isDark = {isDark} 
+              showThemeChangeBlock = {showThemeChangeBlock} 
+              isShown = {isShown}
+              chooseTheme = {chooseTheme}
             />
             <h1 
               style = {{color: themeColor}}
