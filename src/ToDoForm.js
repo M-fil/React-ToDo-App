@@ -49,21 +49,27 @@ function ToDoForm (props) {
                 />
             </p>
 
-            <label htmlFor = "importance" style = {{color: themeColor}}>Add Task Importance: </label>
-            <p>
-                <select 
-                    name = "importance"
-
-                    importance = {props.importance}
-                    onChange = {props.importanceHandleInput}
-                    style = {{color: themeColor, borderBottom: borderColor}} 
-                >
-                    <option value = "I - Urgent Task">I - Urgent Task</option>
-                    <option value = "II - Important">II - Important</option>
-                    <option value = "III - Unimportant Task">III - Unimportant Task</option>
-                    <option value = "IV - Useless Task">IV - Useless Task</option>
-                </select>
-            </p>
+            {
+                props.withSquares ? 
+                    <span>
+                        <label htmlFor = "importance" style = {{color: themeColor}}>Add Task Importance: </label>
+                        <p>
+                            <select 
+                                name = "importance"
+            
+                                importance = {props.importance}
+                                onChange = {props.importanceHandleInput}
+                                style = {{color: themeColor, borderBottom: borderColor}} 
+                            >
+                                <option value = "I - Urgent Task">I - Urgent Task</option>
+                                <option value = "II - Important">II - Important</option>
+                                <option value = "III - Unimportant Task">III - Unimportant Task</option>
+                                <option value = "IV - Useless Task">IV - Useless Task</option>
+                            </select>
+                        </p>
+                    </span>
+                : null
+            }
 
             <button 
                 type = "submit"

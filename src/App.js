@@ -74,6 +74,8 @@ export const ThemeContext = createContext(themes.light);
 
 function App () {
 
+  const [withSquares, setWithSquares] = useState(true);
+  /********************** */
   const [isFormShown, setIsFormShown] = useState(true);
   const [typeOfTheme, setTypeOfTheme] = useState(themes.light);
   const [isShown, setIsShown] = useState(false);
@@ -100,6 +102,19 @@ function App () {
       setBackgroundImage("");
   }
 
+  const changeListView = () => {
+      setWithSquares(!withSquares);
+
+      setCommonTaskData(
+        [
+          ...taskData.tasks1,
+          ...taskData.tasks2,
+          ...taskData.tasks3,
+          ...taskData.tasks4,
+        ]
+      );
+      
+  }
   
   useEffect(() => {
       document.body.style.backgroundImage = "url('" + backgroundImage + "')";
@@ -122,7 +137,11 @@ function App () {
     deleteTask4,
 
     textRef,
-    deadlineRef} = useToDo();
+    deadlineRef,
+    
+    deleteTaskFromCommonList,
+    commonTaskData,
+    setCommonTaskData} = useToDo();
 
     const themeColor = typeOfTheme["color"];
     
@@ -135,6 +154,8 @@ function App () {
           >
             {isFormShown ? (
               <ToDoForm 
+                withSquares = {withSquares}
+
                 text = {taskData.currentTask.text}
                 deadline = {taskData.currentTask.deadline}
                 importance = {taskData.currentTask.importance}
@@ -150,7 +171,10 @@ function App () {
           }
 
           <div id = "squares">
-          <SwitchTasksListView />
+            <SwitchTasksListView 
+              changeListView = {changeListView} 
+              withSquares = {withSquares}
+            />
 
             <ToggleThemeButton 
               showThemeChangeBlock = {showThemeChangeBlock} 
@@ -166,13 +190,16 @@ function App () {
               image5 = {images.image5}
               image6 = {images.image6}
             />
-            <h1 
-              style = {{color: themeColor}}
-            >
+
+            <h1 style = {{color: themeColor}}>
               ToDo App
             </h1>
 
             <ToDoList 
+              withSquares = {withSquares}
+              commonList = {commonTaskData}
+              deleteTask = {deleteTaskFromCommonList}
+              
               deleteTask1 = {deleteTask1}
               deleteTask2 = {deleteTask2}
               deleteTask3 = {deleteTask3}

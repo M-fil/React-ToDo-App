@@ -1,11 +1,13 @@
 import React from 'react';
 import "./switcher.css";
 
-function SwitchTasksListView() {
+function SwitchTasksListView(props) {
     return (
         <div className="switcher-container">
-            <label htmlFor="switcher" className="text">Without Squares</label>
-            <input type="checkbox" id="switcher" />
+            <input type="checkbox" id="switcher" onChange = {props.changeListView} />
+            <label htmlFor="switcher" className="text">
+                {props.withSquares ? "With Squares" : "Without Squares"}
+            </label>
         </div>
     )
 }

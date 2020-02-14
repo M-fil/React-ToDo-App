@@ -63,4 +63,4 @@ function TaskItem({ item, deleteTask }) {
         </li>)
 }
 
-export default TaskItem
+export default TaskItem;

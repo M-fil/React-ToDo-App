@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import shortid from 'shortid';
 
 function useToDo() {
@@ -14,9 +14,11 @@ function useToDo() {
             id: "",
             text: "",
             deadline: "",
-            importance: "I - Urgent Task"
+            importance: "I - Urgent Task",
         }
     });
+
+    const [commonTaskData, setCommonTaskData] = useState([]);
 
     const onChangeHandler = (event) => {
     const value = event.target.value;
@@ -27,6 +29,7 @@ function useToDo() {
         id: shortid.generate(),
         [name]: value,
     }
+
     setTaskData({
         ...taskData,
         currentTask,
@@ -64,6 +67,17 @@ function useToDo() {
         textRef.current.value = "";
         deadlineRef.current.value = "";
     }
+
+    useEffect(() => {
+        setCommonTaskData(
+            [
+              ...taskData.tasks1,
+              ...taskData.tasks2,
+              ...taskData.tasks3,
+              ...taskData.tasks4,
+            ]
+        );
+    }, [taskData]);
 
     const deleteTask1 = (id) => {
         const tasksWithDeletedItem = taskData.tasks1.filter(item => {
@@ -109,6 +123,38 @@ function useToDo() {
         });
     }
 
+    const deleteTaskFromCommonList = (id) => {
+        const tasksWithDeletedItem = commonTaskData.filter(item => {
+            return item.id !== id;
+        });
+
+        setCommonTaskData(tasksWithDeletedItem);
+
+        const tasksWithDeletedItem1 = taskData.tasks1.filter(item => {
+            return item.id !== id;
+        });
+
+        const tasksWithDeletedItem2 = taskData.tasks2.filter(item => {
+            return item.id !== id;
+        });
+
+        const tasksWithDeletedItem3 = taskData.tasks3.filter(item => {
+            return item.id !== id;
+        });
+
+        const tasksWithDeletedItem4 = taskData.tasks4.filter(item => {
+            return item.id !== id;
+        });
+
+        setTaskData({
+            ...taskData,
+            tasks1: tasksWithDeletedItem1,
+            tasks2: tasksWithDeletedItem2,
+            tasks3: tasksWithDeletedItem3,
+            tasks4: tasksWithDeletedItem4,
+        });
+    }
+
     return {
         taskData,
 
@@ -122,6 +168,10 @@ function useToDo() {
 
         textRef,
         deadlineRef,
+
+        deleteTaskFromCommonList,
+        commonTaskData,
+        setCommonTaskData,
     }
 }
 

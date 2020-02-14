@@ -1,5 +1,7 @@
 .switcher-container {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
@@ -9,7 +11,7 @@
     color: #131313;
 }
 
-input[type=checkbox] {
+.switcher-container > input[type=checkbox] {
     -webkit-appearance: none;
     -moz-appearance: none;
     height: 35px;
