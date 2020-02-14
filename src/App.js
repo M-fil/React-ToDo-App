@@ -5,6 +5,7 @@ import ToDoList from './ToDoList';
 import useToDo from "./useToDo";
 import ToggleThemeButton from "./ToggleThemeButton";
 import LeftSideBlock from "./LeftSideBlock";
+import SwitchTasksListView from "./SwitchTasksListView";
 
 const themes = {
   dark: {
@@ -149,6 +150,8 @@ function App () {
           }
 
           <div id = "squares">
+          <SwitchTasksListView />
+
             <ToggleThemeButton 
               showThemeChangeBlock = {showThemeChangeBlock} 
               isShown = {isShown}
@@ -168,6 +171,7 @@ function App () {
             >
               ToDo App
             </h1>
+
             <ToDoList 
               deleteTask1 = {deleteTask1}
               deleteTask2 = {deleteTask2}
