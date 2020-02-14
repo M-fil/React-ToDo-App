@@ -3,9 +3,10 @@ import "./social-colors.css";
 import "./social.css";
 
 function Footer() {
+
     return (    
         <footer className="social-wrapper">
-            <div className="icon-box">
+            <div className="icon-box" >
                 <a href="https://vk.com/id327021520" target="_blank" rel="noopener noreferrer" className="fa-stack fa-2x color-vk">
                     <i className="fas fa-circle fa-stack-2x"></i>
                     <i className="fab fa-vk fa-stack-1x fa-inverse"></i>

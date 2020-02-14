@@ -5,6 +5,7 @@ import { ThemeContext } from "./App";
 function Checkbox(props) {
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
+    const borderColor = "1px solid " + theme.borderColor;
 
     return (
         <label className = "checkbox-container">
@@ -17,7 +18,7 @@ function Checkbox(props) {
             />
             <span 
                 className = "fake"
-                style = {{borderColor: themeColor}}
+                style = {{border: borderColor}}
             >
             </span>
         </label>

@@ -6,6 +6,7 @@ import "../src/icons/css/all.css"
 function TaskItem({ item, deleteTask }) {
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
+    const borderColor = "1px solid " + theme.borderColor;
 
     const [isChecked, setIsChecked] = useState(false);
     const taskTextRef = useRef();
@@ -19,6 +20,7 @@ function TaskItem({ item, deleteTask }) {
             className = "task-container" 
             style = {{
                 opacity: isChecked ? 0.5 : 1,
+                borderBottom: borderColor,
             }}
         >
             <div className = "task-container-upper">   

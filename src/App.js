@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useEffect } from 'react';
 
 import ToDoForm from "./ToDoForm";
 import ToDoList from './ToDoList';
@@ -8,32 +8,106 @@ import LeftSideBlock from "./LeftSideBlock";
 
 const themes = {
   dark: {
-    color: "rgb(40, 44, 52)",
-    backgroundColor: "#e8eaed",
-  },
-  light: {
     color: "#e8eaed",
     backgroundColor: "rgb(40, 44, 52)",
-  }
+    borderColor: "#cbf0f8",
+  },
+  light: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#e8eaed",
+    borderColor: "rgb(40, 44, 52)",
+  },
+  red: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#f28b82",
+    borderColor: "rgb(40, 44, 52)",
+  },
+  orange: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#fbbc04",
+    borderColor: "rgb(40, 44, 52)",
+  },
+  yellow: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#fff475",
+    borderColor: "rgb(40, 44, 52)",
+  },
+  purple: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#d7aefb",
+    borderColor: "rgb(40, 44, 52)",
+  },
+  pink: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#fdcfe8",
+    borderColor: "rgb(40, 44, 52)",
+  },
+  blue: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#aecbfa",
+    borderColor: "rgb(40, 44, 52)",
+  },
+  skyblue: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#cbf0f8",
+    borderColor: "rgb(40, 44, 52)",
+  },
+  brown: {
+    color: "rgb(40, 44, 52)",
+    backgroundColor: "#e6c9a8",
+    borderColor: "rgb(40, 44, 52)",
+  },
 }
+
+let images = {
+  image1: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+  image2: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
+  image3: "https://bipbap.ru/wp-content/uploads/2017/04/0_7c779_5df17311_orig.jpg",
+  image4: "https://lh3.googleusercontent.com/proxy/fWdndXFFlWEpb4KxiwNyEG4FcNT0AckGCHs5h-F25WoAXsTkcEpxIaa7j8fnRWk5AXFXH3LHWjblf_5lp4A3zQNCZUaM_o8",
+  image5: "https://storage.ws.pho.to/s2/BA338FD8-AD48-11E9-8DEA-026B9DE2F0AA_m.jpg",
+  image6: "https://photolemur.com/uploads/blog/unnamed.jpg",
+}
+
 
 export const ThemeContext = createContext(themes.light); 
 
 function App () {
+
   const [isFormShown, setIsFormShown] = useState(true);
-  const [isDark, setIsDark] = useState(false);
+  const [typeOfTheme, setTypeOfTheme] = useState(themes.light);
+  const [isShown, setIsShown] = useState(false);
 
   const showTaskForm = () => {
       setIsFormShown(!isFormShown);
   }
 
-  const changeTheme = () => {
-    setIsDark(!isDark);
-
-    isDark 
-      ? document.body.style.backgroundColor = themes.light.color
-      : document.body.style.backgroundColor = themes.dark.color;
+  const showThemeChangeBlock = () => {
+    setIsShown(!isShown);
   }
+  
+  const chooseTheme = (event) => {
+    setTypeOfTheme(themes[`${event.target.dataset.color}`]);
+  }
+
+  const [backgroundImage, setBackgroundImage] = useState("");
+
+  const changeBackground = (event) => {
+      setBackgroundImage(event.target.src);
+  }
+
+  const deleteBackgroundImage = () => {
+      setBackgroundImage("");
+  }
+
+  
+  useEffect(() => {
+      document.body.style.backgroundImage = "url('" + backgroundImage + "')";
+  }, [backgroundImage]);
+
+  
+  useEffect(() => {
+    document.body.style.backgroundColor = typeOfTheme.backgroundColor;
+  }, [typeOfTheme]);
 
   const {
     taskData,
@@ -49,11 +123,11 @@ function App () {
     textRef,
     deadlineRef} = useToDo();
 
-    const themeColor = isDark ? themes.light.color : themes.dark.color;
+    const themeColor = typeOfTheme["color"];
     
   return (
       <div>
-        <ThemeContext.Provider value = {isDark ? themes.light : themes.dark}>
+        <ThemeContext.Provider value = {typeOfTheme}>
           <LeftSideBlock 
             showTaskForm = {showTaskForm}
             isFormShown = {isFormShown}
@@ -76,8 +150,18 @@ function App () {
 
           <div id = "squares">
             <ToggleThemeButton 
-              changeTheme = {changeTheme} 
-              isDark = {isDark} 
+              showThemeChangeBlock = {showThemeChangeBlock} 
+              isShown = {isShown}
+              chooseTheme = {chooseTheme}
+              changeBackground = {changeBackground}
+              deleteBackgroundImage = {deleteBackgroundImage}
+
+              image1 = {images.image1}
+              image2 = {images.image2}
+              image3 = {images.image3}
+              image4 = {images.image4}
+              image5 = {images.image5}
+              image6 = {images.image6}
             />
             <h1 
               style = {{color: themeColor}}

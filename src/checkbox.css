@@ -16,7 +16,6 @@ input, select {
     background-color: transparent;
     font-size: 1.1rem;
     font-style: italic;
-    border-bottom: 1px solid silver;
     width: 90%;
 }
 
@@ -60,7 +59,6 @@ button:focus {
     display: inline-block;
     width: 20px;
     height: 20px;
-    border: 1px solid black;
     margin-right: 15px;
     border-radius: 50%;
 }
@@ -91,7 +89,6 @@ button:focus {
 
 
 .task-container {
-    border-bottom: 1px solid silver;
     padding: 10px 0 10px 10px;
     margin-bottom: 10px;
 }
