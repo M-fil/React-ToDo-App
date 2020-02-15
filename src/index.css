@@ -70,6 +70,7 @@ code {
   position: relative;
   padding: 0 10px;
   border-radius: 10px;
+  opacity: 0.9;
 }
 
 .square .list {

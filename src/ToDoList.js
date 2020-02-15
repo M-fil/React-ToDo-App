@@ -3,7 +3,6 @@ import Square from "./Square";
 import TaskItem from "./TaskItem";
 
 function ToDoList (props) {
-
     return (
         <div>
             {
@@ -12,22 +11,22 @@ function ToDoList (props) {
                         <Square 
                             square = {props.square1} 
                             squareNumber = "I - Urgent Task" 
-                            deleteTask = {props.deleteTask1} 
+                            deleteTask = {props.deleteTask1}
                         />
                         <Square 
                             square = {props.square2} 
                             squareNumber = "II - Important"
-                            deleteTask = {props.deleteTask2} 
+                            deleteTask = {props.deleteTask2}
                         />
                         <Square 
                             square = {props.square3} 
                             squareNumber = "III - Unimportant Task"
-                            deleteTask = {props.deleteTask3} 
+                            deleteTask = {props.deleteTask3}
                         />
                         <Square 
                             square = {props.square4} 
                             squareNumber = "IV - Useless Task"
-                            deleteTask = {props.deleteTask4} 
+                            deleteTask = {props.deleteTask4}
                         />
                     </div>
                 : 
@@ -37,8 +36,11 @@ function ToDoList (props) {
                             props.commonList.map((item) => {
                                 return <TaskItem 
                                             key = {item.id}
+                                            id = {item.id}
                                             item = {item} 
                                             deleteTask = {props.deleteTask} 
+                                            array = {props.commonList}
+                                            isChecked = {item.checked}
                                         />
                             })
                         }

@@ -6,7 +6,7 @@ import TaskItem from "./TaskItem";
 function Square(props) {    
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
-    const themeBackgroundColor = theme.backgroundColor;
+    const themeBackgroundColor = `${theme.backgroundColor}`;
     const borderColor = "1px solid " + theme.borderColor;
 
     return (
@@ -22,8 +22,11 @@ function Square(props) {
                 {props.square.map((item) => {
                     return <TaskItem 
                                 key = {item.id}
+                                id = {item.id}
                                 item = {item} 
-                                deleteTask = {props.deleteTask} 
+                                deleteTask = {props.deleteTask}
+                                array = {props.square}
+                                isChecked = {item.checked}
                             />
                 })} 
             </ul>

@@ -15,6 +15,7 @@ function useToDo() {
             text: "",
             deadline: "",
             importance: "I - Urgent Task",
+            checked: false,
         }
     });
 
@@ -28,6 +29,7 @@ function useToDo() {
         ...taskData.currentTask,
         id: shortid.generate(),
         [name]: value,
+        checked: false,
     }
 
     setTaskData({
@@ -63,6 +65,8 @@ function useToDo() {
                 default : return taskData;
             }
         }
+
+        console.log(taskData)
 
         textRef.current.value = "";
         deadlineRef.current.value = "";
