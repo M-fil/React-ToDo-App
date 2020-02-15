@@ -85,6 +85,32 @@ code {
   display: none;
 }
 
+.deadline-sort-button {
+  cursor: pointer;
+  
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  border: none;
+  background-color: transparent;
+}
+
+.deadline-sort-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  font-size: 1.4rem;
+  transition: 0.3s;
+}
+
+.deadline-sort-button:hover {
+  
+}
+
 .square h3 {
   z-index: 20;
   text-align: center;
