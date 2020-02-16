@@ -1,6 +1,8 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { ThemeContext } from "./App";
 import TaskItem from "./TaskItem";
+import useDeadlineSort from "./useDeadlineSort";
+import DeadlineSortButton from "./DeadlineSortButton";
 
 function Square(props) {    
     const theme = useContext(ThemeContext);
@@ -8,38 +10,12 @@ function Square(props) {
     const themeBackgroundColor = `${theme.backgroundColor}`;
     const borderColor = "1px solid " + theme.borderColor;
 
-    const [isDescSort, setIsDescSort] = useState(false);
+    const { sortSample, isDescSort, setIsDescSort } = useDeadlineSort();
 
-    const sortSample = (array, isDesc) => {
-        switch (isDesc) {
-            case false : 
-                array.sort((a, b) => {
-                    return new Date(a.deadline.toLocaleString()) - new Date(b.deadline.toLocaleString());
-                });
-            break;
-
-            case true : 
-                array.sort((a, b) => {
-                    return new Date(b.deadline.toLocaleString()) - new Date(a.deadline.toLocaleString());
-                });
-            break;
-
-            default :
-                array.sort((a, b) => {
-                    return new Date(a.deadline.toLocaleString()) - new Date(b.deadline.toLocaleString());
-                });
-            break;
-        }
-    }
-    
     const sortByDeadline = () => {
         setIsDescSort(!isDescSort);
         sortSample(props.square, isDescSort);
     }
-
-    useEffect(() => {
-        sortSample(props.square, isDescSort);
-    }, [props.square, isDescSort])
 
     return (
         <div 
@@ -49,19 +25,12 @@ function Square(props) {
                 border: borderColor,
             }}
         >
-            <button 
-                type="button" 
-                className="deadline-sort-button" 
-                onClick = {sortByDeadline}
-                style = {{
-                    backgroundColor: themeBackgroundColor,
-                    color: themeColor,
-                    border: borderColor,
-                    transform: isDescSort === true ? "rotate(180deg)" : "rotate(360deg)", 
-                }}
-            >
-                ↑
-            </button>
+            <DeadlineSortButton 
+                array = {props.square} 
+                sort = {sortByDeadline} 
+                isDescSort = {isDescSort}
+                position = "absolute"
+            />
 
             <h3 style = {{color: themeColor}}> {props.squareNumber} </h3>
             <ul className = "list"> 

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import shortid from 'shortid';
+//import useDeadlineSort from "./useDeadlineSort";
 
 function useToDo() {
     const textRef = useRef();
@@ -19,23 +20,31 @@ function useToDo() {
         }
     });
 
+    /*const { sortSample, isDescSort } = useDeadlineSort();
+    const sortByDeadline = useCallback(
+        (array) => {
+            sortSample(array, isDescSort);
+        },
+        [isDescSort, sortSample],
+    )*/
+
     const [commonTaskData, setCommonTaskData] = useState([]);
 
     const onChangeHandler = (event) => {
-    const value = event.target.value;
-    const name = event.target.name;
+        const value = event.target.value;
+        const name = event.target.name;
 
-    const currentTask = {
-        ...taskData.currentTask,
-        id: shortid.generate(),
-        [name]: value,
-        checked: false,
-    }
+        const currentTask = {
+            ...taskData.currentTask,
+            id: shortid.generate(),
+            [name]: value,
+            checked: false,
+        }
 
-    setTaskData({
-        ...taskData,
-        currentTask,
-    });
+        setTaskData({
+            ...taskData,
+            currentTask,
+        });
     }
 
     const addTask = (event) => {
@@ -56,21 +65,27 @@ function useToDo() {
                 case "II - Important" :
                     setTaskData({ ...taskData ,tasks2: [taskData.currentTask, ...taskData.tasks2], currentTask: currentTask });
                     break;
-                case "III - Unimportant Task" :
+                case "III - For Later" :
                     setTaskData({ ...taskData ,tasks3: [taskData.currentTask, ...taskData.tasks3], currentTask: currentTask });
                     break;
-                case "IV - Useless Task" :
+                case "IV - Delegate to Another" :
                     setTaskData({ ...taskData ,tasks4: [taskData.currentTask, ...taskData.tasks4], currentTask: currentTask });
                     break;
                 default : return taskData;
             }
-        }
-
-        console.log(taskData)
+        }    
 
         textRef.current.value = "";
         deadlineRef.current.value = "";
     }
+
+    /*useEffect(() => {
+        sortByDeadline(taskData.tasks1);
+        sortByDeadline(taskData.tasks2);
+        sortByDeadline(taskData.tasks3);
+        sortByDeadline(taskData.tasks4);
+
+    }, [taskData.tasks1, taskData.tasks2, taskData.tasks3, taskData.tasks4, sortByDeadline]);*/
 
     useEffect(() => {
         setCommonTaskData(

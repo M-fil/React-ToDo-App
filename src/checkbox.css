@@ -95,8 +95,9 @@ button:focus {
 
 .task-container-upper {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-bottom: 10px;
+    position: relative;
 }
 
 
@@ -119,6 +120,9 @@ button:focus {
     border-radius: 10px;
     margin-left: 10px;
     height: 40px;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .delete-button i {

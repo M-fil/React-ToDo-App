@@ -10,7 +10,7 @@ function SwitchTasksListView(props) {
         <div className="switcher-container">
             <input type="checkbox" id="switcher" onChange = {props.changeListView} />
             <label htmlFor="switcher" className="text" style = {{color: themeColor}}>
-                {props.withSquares ? "With Squares" : "Without Squares"}
+                Priotiry (Blocks)
             </label>
         </div>
     )

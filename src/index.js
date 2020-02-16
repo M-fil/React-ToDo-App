@@ -7,6 +7,6 @@ import App from "./App";
 import Footer from "./Footer";
 
 ReactDOM.render(<App />, document.querySelector("#root"));
-ReactDOM.render(<Footer />, document.querySelector("footer"));
+ReactDOM.render(<Footer />, document.querySelector("#footer"));
 
 serviceWorker.unregister();

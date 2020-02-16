@@ -61,10 +61,10 @@ function ToDoForm (props) {
                                 onChange = {props.importanceHandleInput}
                                 style = {{color: themeColor, borderBottom: borderColor}} 
                             >
-                                <option value = "I - Urgent Task">I - Urgent Task</option>
+                                <option value = "I - Urgent Task">I - Urgent</option>
                                 <option value = "II - Important">II - Important</option>
-                                <option value = "III - Unimportant Task">III - Unimportant Task</option>
-                                <option value = "IV - Useless Task">IV - Useless Task</option>
+                                <option value = "III - For Later">III - For Later</option>
+                                <option value = "IV - Delegate to Another">IV - Delegate to Another</option>
                             </select>
                         </p>
                     </span>
@@ -74,6 +74,7 @@ function ToDoForm (props) {
             <button 
                 type = "submit"
                 className = "simple-button radius" 
+                title = {props.title}
 
                 style = {{
                     border: "1px solid " +  themeColor,

@@ -6,6 +6,9 @@ import useToDo from "./useToDo";
 import ToggleThemeButton from "./ToggleThemeButton";
 import LeftSideBlock from "./LeftSideBlock";
 import SwitchTasksListView from "./SwitchTasksListView";
+import DeadlineSortButton from "./DeadlineSortButton";
+import useDeadlineSort from "./useDeadlineSort";
+
 
 const themes = {
   dark: {
@@ -73,9 +76,8 @@ let images = {
 export const ThemeContext = createContext(themes.light); 
 
 function App () {
-
   const [withSquares, setWithSquares] = useState(true);
-  /********************** */
+
   const [isFormShown, setIsFormShown] = useState(true);
   const [typeOfTheme, setTypeOfTheme] = useState(themes.light);
   const [isShown, setIsShown] = useState(false);
@@ -112,9 +114,7 @@ function App () {
           ...taskData.tasks3,
           ...taskData.tasks4,
         ]
-      );
-      
-      
+      ); 
   }
   
   useEffect(() => {
@@ -144,6 +144,13 @@ function App () {
     commonTaskData,
     setCommonTaskData} = useToDo();
 
+    const { sortSample, isDescSort, setIsDescSort } = useDeadlineSort();
+    
+    const sortByDeadline = () => {
+      setIsDescSort(!isDescSort);
+      sortSample(commonTaskData, isDescSort);
+  }
+
     const themeColor = typeOfTheme["color"];
     
   return (
@@ -156,6 +163,10 @@ function App () {
             {isFormShown ? (
               <ToDoForm 
                 withSquares = {withSquares}
+                title = {!withSquares 
+                  ? "After switching to the view with Blocks all tasks will be saved in 'I - Urgent Task'"
+                  : null
+                }
 
                 text = {taskData.currentTask.text}
                 deadline = {taskData.currentTask.deadline}
@@ -192,8 +203,23 @@ function App () {
               image6 = {images.image6}
             />
 
-            <h1 style = {{color: themeColor}}>
+            <h1 
+              id = "main-title" 
+              style = {{
+                color: themeColor,
+              }}
+            >
               ToDo App
+              {
+                !withSquares ?            
+                  <DeadlineSortButton 
+                    array = {commonTaskData} 
+                    sort = {sortByDeadline} 
+                    isDescSort = {isDescSort}
+                    position = "relative"
+                  /> 
+                : null
+              }
             </h1>
 
             <ToDoList 

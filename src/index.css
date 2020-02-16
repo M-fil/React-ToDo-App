@@ -24,6 +24,16 @@ code {
     monospace;
 }
 
+#root {
+  min-height: calc(80vh - 20px);
+}
+
+#main-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 #todo-title {
   padding-bottom: 5px;
   text-align: center;
@@ -63,7 +73,7 @@ code {
   display: grid;
   grid-template-columns: 350px 350px;
   grid-template-rows: 350px 350px;
-  grid-gap: 0.5rem;
+  grid-gap: 15px;
 }
 
 .square {
@@ -107,8 +117,17 @@ code {
   transition: 0.3s;
 }
 
-.deadline-sort-button:hover {
-  
+.common-tasks-list-container {
+  opacity: 0.9;
+  padding: 10px 15px;
+  width: 715px;
+  max-height: 50vh;
+  overflow-y: scroll;
+  border-radius: 10px;
+}
+
+.common-tasks-list-container::-webkit-scrollbar {
+  display: none;
 }
 
 .square h3 {
@@ -119,6 +138,6 @@ code {
 }
 
 footer {
+  height: 50px;
   margin-bottom: 30px;
-  margin-top: 30px;
 }

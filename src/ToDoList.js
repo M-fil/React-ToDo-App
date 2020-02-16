@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Square from "./Square";
 import TaskItem from "./TaskItem";
+import { ThemeContext } from "./App";
 
 function ToDoList (props) {
+    const theme = useContext(ThemeContext);
+    const themeBackgroundColor = `${theme.backgroundColor}`;
+    const borderColor = "1px solid " + theme.borderColor;
+
     return (
         <div>
             {
@@ -10,7 +15,7 @@ function ToDoList (props) {
                     <div id="main">
                         <Square 
                             square = {props.square1} 
-                            squareNumber = "I - Urgent Task" 
+                            squareNumber = "I - Urgent" 
                             deleteTask = {props.deleteTask1}
                         />
                         <Square 
@@ -20,31 +25,43 @@ function ToDoList (props) {
                         />
                         <Square 
                             square = {props.square3} 
-                            squareNumber = "III - Unimportant Task"
+                            squareNumber = "III - For Later"
                             deleteTask = {props.deleteTask3}
                         />
                         <Square 
                             square = {props.square4} 
-                            squareNumber = "IV - Useless Task"
+                            squareNumber = "IV - Delegate to Another"
                             deleteTask = {props.deleteTask4}
                         />
                     </div>
                 : 
-                <div>
-                    <ul>
-                        {
-                            props.commonList.map((item) => {
-                                return <TaskItem 
-                                            key = {item.id}
-                                            id = {item.id}
-                                            item = {item} 
-                                            deleteTask = {props.deleteTask} 
-                                            array = {props.commonList}
-                                            isChecked = {item.checked}
-                                        />
-                            })
-                        }
-                    </ul>
+                <div 
+                    className="common-tasks-list-container"
+                    style = {{
+                        backgroundColor: themeBackgroundColor,
+                        border: borderColor,
+                        textAlign: props.commonList.length === 0 ? "center" : "left",
+                    }}
+                >
+                    {
+                        props.commonList.length === 0 
+                            ? "No any tasks." 
+                            :
+                            <ul>
+                                {
+                                    props.commonList.map((item) => {
+                                        return <TaskItem 
+                                                    key = {item.id}
+                                                    id = {item.id}
+                                                    item = {item} 
+                                                    deleteTask = {props.deleteTask} 
+                                                    array = {props.commonList}
+                                                    isChecked = {item.checked}
+                                                />
+                                    })
+                                }
+                            </ul>
+                    }   
                 </div>
             }
         </div>
