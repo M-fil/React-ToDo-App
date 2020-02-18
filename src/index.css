@@ -1,15 +1,26 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+
+  font-family: -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
   background-image: url("./images/image2.jfif");
   background-repeat: no-repeat;
-  background-size: cover;
   background-position: center;
+  background-size: cover;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ul {
@@ -21,25 +32,32 @@ li {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: "source-code-pro",
+    "Menlo",
+    "Monaco",
+    "Consolas",
+    "Courier New",
     monospace;
 }
 
 #root {
   position: relative;
+
   min-height: calc(80vh - 20px);
 }
 
 #main-title {
   position: relative;
+
   display: flex;
   align-items: center;
 }
 
 #todo-title {
-  padding-bottom: 5px;
-  text-align: center;
   margin-bottom: 0;
+  padding-bottom: 5px;
+
+  text-align: center;
 }
 
 #create-task-form {
@@ -47,50 +65,57 @@ code {
 }
 
 #left-side {
-  z-index: 100;
   position: fixed;
-  left: 0;
   top: 0;
+  left: 0;
+  z-index: 100;
 
   display: flex;
   flex-direction: column;
-
+  width: 20vw;
   margin-right: 50px;
   padding-bottom: 30px;
-  border-bottom-right-radius: 20px;
-  width: 20vw;
-  background-color: #e8eaed;
 
-  transition: .4s;
+  background-color: #e8eaed;
+  border-bottom-right-radius: 20px;
+
+  transition: 0.4s;
 }
 
 #squares {
   z-index: 1;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  padding: 20px;
 }
 
 #main {
   display: grid;
+
+  grid-gap: 15px;
   grid-template-columns: 350px 350px;
   grid-template-rows: 350px 350px;
-  grid-gap: 15px;
 }
 
 .square {
   position: relative;
+
   padding: 0 10px;
+
   border-radius: 10px;
   opacity: 0.9;
 }
 
 .square .list {
+  position: relative;
+
   display: block;
   height: 260px;
-  position: relative;
-  overflow-y: scroll;
   padding: 5px 15px;
+  overflow-y: scroll;
 }
 
 .square .list::-webkit-scrollbar {
@@ -98,34 +123,35 @@ code {
 }
 
 .deadline-sort-button {
-  cursor: pointer;
-  
   position: absolute;
-  right: 5px;
   top: 5px;
-  border: none;
-  background-color: transparent;
-}
+  right: 5px;
 
-.deadline-sort-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
   width: 40px;
   height: 40px;
   margin-left: 10px;
+
   font-size: 1.4rem;
+
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+
   transition: 0.3s;
 }
 
 .common-tasks-list-container {
-  opacity: 0.9;
-  padding: 10px 15px;
   width: 715px;
   max-height: 50vh;
+  padding: 10px 15px;
   overflow-y: scroll;
+
   border-radius: 10px;
+  opacity: 0.9;
 }
 
 .common-tasks-list-container::-webkit-scrollbar {
@@ -134,9 +160,11 @@ code {
 
 .square h3 {
   z-index: 20;
-  text-align: center;
-  margin-bottom: 20px;
+
   width: 100%;
+  margin-bottom: 20px;
+
+  text-align: center;
 }
 
 footer {
