@@ -1,11 +1,14 @@
 .switcher-container {
     position: absolute;
-    right: 10%;
-    top: 5%;
+    right: 100px;
+    top: 50px;
     
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+
+    padding: 10px 15px;
+    border-radius: 10px;
 }
 
 .switcher-container .text {

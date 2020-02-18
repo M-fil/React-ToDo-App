@@ -5,6 +5,7 @@ import { ThemeContext } from "./App";
 
 function ToDoList (props) {
     const theme = useContext(ThemeContext);
+    const themeColor = theme.color;
     const themeBackgroundColor = `${theme.backgroundColor}`;
     const borderColor = "1px solid " + theme.borderColor;
 
@@ -45,7 +46,10 @@ function ToDoList (props) {
                 >
                     {
                         props.commonList.length === 0 
-                            ? "No any tasks." 
+                            ? 
+                            <span style = {{color: themeColor}}>
+                                No any tasks.
+                            </span>
                             :
                             <ul>
                                 {

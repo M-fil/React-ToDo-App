@@ -6,9 +6,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("");
+  background-image: url("./images/image2.jfif");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 ul {
@@ -25,6 +26,7 @@ code {
 }
 
 #root {
+  position: relative;
   min-height: calc(80vh - 20px);
 }
 
@@ -138,6 +140,6 @@ code {
 }
 
 footer {
-  height: 50px;
+  margin-top: 10px;
   margin-bottom: 30px;
 }

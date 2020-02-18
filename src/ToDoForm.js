@@ -19,7 +19,6 @@ function ToDoForm (props) {
                 <input 
                     type = "text" 
                     name = "text"
-                    placeholder = "Add task..."
 
                     ref = {props.textRef}
                     text = {props.text}
@@ -36,7 +35,6 @@ function ToDoForm (props) {
                 <input 
                     type = "date" 
                     name = "deadline"
-                    placeholder = "Add deadline..."
 
                     ref = {props.deadlineRef}
                     deadline = {props.deadline}

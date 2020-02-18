@@ -25,8 +25,8 @@ function ThemeChangeWindow(props) {
         <div className = "theme-change-window">
             <h3>Background Colors</h3>
             <ul className = "list">
-                <ColorItem color = "light" chooseTheme = {props.chooseTheme} />
                 <ColorItem color = "dark" chooseTheme = {props.chooseTheme} />
+                <ColorItem color = "light" chooseTheme = {props.chooseTheme} />
                 <ColorItem color = "red" chooseTheme = {props.chooseTheme} />
                 <ColorItem color = "orange" chooseTheme = {props.chooseTheme} />
                 <ColorItem color = "yellow" chooseTheme = {props.chooseTheme} />

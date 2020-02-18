@@ -9,6 +9,13 @@ import SwitchTasksListView from "./SwitchTasksListView";
 import DeadlineSortButton from "./DeadlineSortButton";
 import useDeadlineSort from "./useDeadlineSort";
 
+import image1 from "./images/image1.jpg";
+import image2 from "./images/image2.jfif";
+import image3 from "./images/image3.jpg";
+import image4 from "./images/image4.jpg";
+import image5 from "./images/image5.jpg";
+import image6 from "./images/image6.jpg";
+
 
 const themes = {
   dark: {
@@ -64,22 +71,21 @@ const themes = {
 }
 
 let images = {
-  image1: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-  image2: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80",
-  image3: "https://bipbap.ru/wp-content/uploads/2017/04/0_7c779_5df17311_orig.jpg",
-  image4: "https://lh3.googleusercontent.com/proxy/fWdndXFFlWEpb4KxiwNyEG4FcNT0AckGCHs5h-F25WoAXsTkcEpxIaa7j8fnRWk5AXFXH3LHWjblf_5lp4A3zQNCZUaM_o8",
-  image5: "https://storage.ws.pho.to/s2/BA338FD8-AD48-11E9-8DEA-026B9DE2F0AA_m.jpg",
-  image6: "https://photolemur.com/uploads/blog/unnamed.jpg",
-}
+  image1: image1, 
+  image2: image2,
+  image3: image3, 
+  image4: image4, 
+  image5: image5, 
+  image6: image6,
+} 
 
-
-export const ThemeContext = createContext(themes.light); 
+export const ThemeContext = createContext(themes.dark); 
 
 function App () {
   const [withSquares, setWithSquares] = useState(true);
 
   const [isFormShown, setIsFormShown] = useState(true);
-  const [typeOfTheme, setTypeOfTheme] = useState(themes.light);
+  const [typeOfTheme, setTypeOfTheme] = useState(themes.dark);
   const [isShown, setIsShown] = useState(false);
 
   const showTaskForm = () => {
@@ -94,7 +100,7 @@ function App () {
     setTypeOfTheme(themes[`${event.target.dataset.color}`]);
   }
 
-  const [backgroundImage, setBackgroundImage] = useState("");
+  const [backgroundImage, setBackgroundImage] = useState(images.image2);
 
   const changeBackground = (event) => {
       setBackgroundImage(event.target.src);
@@ -154,8 +160,13 @@ function App () {
     const themeColor = typeOfTheme["color"];
     
   return (
-      <div>
+      <div className="root-container">
         <ThemeContext.Provider value = {typeOfTheme}>
+          <SwitchTasksListView 
+            changeListView = {changeListView} 
+            withSquares = {withSquares}
+          />
+
           <LeftSideBlock 
             showTaskForm = {showTaskForm}
             isFormShown = {isFormShown}
@@ -183,10 +194,6 @@ function App () {
           }
 
           <div id = "squares">
-            <SwitchTasksListView 
-              changeListView = {changeListView} 
-              withSquares = {withSquares}
-            />
 
             <ToggleThemeButton 
               showThemeChangeBlock = {showThemeChangeBlock} 

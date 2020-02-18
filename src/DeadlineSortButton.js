@@ -18,7 +18,7 @@ function DeadlineSortButton(props) {
                 backgroundColor: themeBackgroundColor,
                 color: themeColor,
                 border: borderColor,
-                opacity: props.array.length > 1 ? 1 : 0.2,
+                opacity: props.array.length > 1 ? 1 : 0.6,
                 transform: props.isDescSort && props.array.length > 1 ? "rotate(180deg)" : "rotate(360deg)",
                 position: props.position
             }}

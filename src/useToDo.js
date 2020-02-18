@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
 import shortid from 'shortid';
-//import useDeadlineSort from "./useDeadlineSort";
 
 function useToDo() {
     const textRef = useRef();
@@ -19,14 +18,6 @@ function useToDo() {
             checked: false,
         }
     });
-
-    /*const { sortSample, isDescSort } = useDeadlineSort();
-    const sortByDeadline = useCallback(
-        (array) => {
-            sortSample(array, isDescSort);
-        },
-        [isDescSort, sortSample],
-    )*/
 
     const [commonTaskData, setCommonTaskData] = useState([]);
 
@@ -78,14 +69,6 @@ function useToDo() {
         textRef.current.value = "";
         deadlineRef.current.value = "";
     }
-
-    /*useEffect(() => {
-        sortByDeadline(taskData.tasks1);
-        sortByDeadline(taskData.tasks2);
-        sortByDeadline(taskData.tasks3);
-        sortByDeadline(taskData.tasks4);
-
-    }, [taskData.tasks1, taskData.tasks2, taskData.tasks3, taskData.tasks4, sortByDeadline]);*/
 
     useEffect(() => {
         setCommonTaskData(
