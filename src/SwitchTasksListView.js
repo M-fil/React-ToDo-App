@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import "./switcher.css";
+import "./css/switcher.css";
 import { ThemeContext } from "./App";
 
 function SwitchTasksListView(props) {

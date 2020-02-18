@@ -1,6 +1,6 @@
 import React from 'react';
-import "./social-colors.css";
-import "./social.css";
+import "./css/social-colors.css";
+import "./css/social.css";
 
 function Footer() {
 

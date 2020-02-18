@@ -1,5 +1,5 @@
 import React from 'react';
-import "./theme-colors.css";
+import "./css/theme-colors.css";
 
 function ColorItem (props) {   
     return (

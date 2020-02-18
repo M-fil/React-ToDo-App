@@ -84,7 +84,7 @@ button:focus {
   width: 35px;
   height: 35px;
 
-  background-image: url("./checked.svg");
+  background-image: url("../checked.svg");
   transform: translate(-50%, -50%);
   opacity: 0;
 

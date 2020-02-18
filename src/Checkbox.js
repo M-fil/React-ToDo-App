@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import "./checkbox.css";
+import "./css/checkbox.css";
 import { ThemeContext } from "./App";
 
 function Checkbox(props) {
