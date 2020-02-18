@@ -31,14 +31,14 @@
     
 }
 
-#switcher {
+.switcher-container .switcher {
     position: relative;
     width: 70px;
     border-radius: 20px;
     transition: 0.3s cubic-bezier(.2, .85, .32, 1.2);
 }
 
-#switcher::after {
+.switcher-container .switcher::after {
     content: "";
     
     position: absolute;
@@ -52,11 +52,11 @@
     transition: all 0.3s cubic-bezier(.2, .85, .32, 1.2);
 }
 
-#switcher:checked {
+.switcher-container .switcher:checked {
     background-color: rgba(39, 94, 254);
 }
 
-#switcher:checked::after {
+.switcher-container .switcher:checked::after {
     transform: translateX(35px);
     background-color: #ffffff;
 }

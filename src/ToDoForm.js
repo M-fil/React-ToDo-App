@@ -75,7 +75,7 @@ function ToDoForm (props) {
                 title = {props.title}
 
                 style = {{
-                    border: "1px solid " +  themeColor,
+                    border: borderColor,
                     backgroundColor: themeBackgroundColor,
                     color: themeColor,
                 }}

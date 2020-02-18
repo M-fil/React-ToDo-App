@@ -7,7 +7,7 @@ import DeadlineSortButton from "./DeadlineSortButton";
 function Square(props) {    
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
-    const themeBackgroundColor = `${theme.backgroundColor}`;
+    const themeBackgroundColor = theme.backgroundColor;
     const borderColor = "1px solid " + theme.borderColor;
 
     const { sortSample, isDescSort, setIsDescSort } = useDeadlineSort();

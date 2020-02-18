@@ -1,7 +1,7 @@
 import React, { useState, useContext, useRef } from 'react'
 import Checkbox from "./Checkbox";
 import { ThemeContext } from "./App";
-import "../src/icons/css/all.css"
+import "../src/icons/css/all.css";
 
 function TaskItem({ id, item, deleteTask, array, isChecked }) {
     const theme = useContext(ThemeContext);
@@ -15,7 +15,7 @@ function TaskItem({ id, item, deleteTask, array, isChecked }) {
         let id = event.target.closest("li").id;
         let result  = array.find(item => item.id === id);
         result.checked = !result.checked;
-        setCheck(result.checked)
+        setCheck(result.checked);
     }
 
     return (
@@ -32,6 +32,7 @@ function TaskItem({ id, item, deleteTask, array, isChecked }) {
                     checked = {check}
                     taskOnChangeHandler = {onHandleChecked}
                 />
+
                 <span 
                     className = "task-text" 
                     ref = {taskTextRef}
@@ -42,6 +43,7 @@ function TaskItem({ id, item, deleteTask, array, isChecked }) {
                 > 
                     {item.text}
                 </span>
+
                 <button 
                     className = "delete-button"
                     style = {{border: themeColor}} 

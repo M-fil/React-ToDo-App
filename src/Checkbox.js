@@ -10,8 +10,8 @@ function Checkbox(props) {
     return (
         <label className = "checkbox-container">
             <input 
-                type = "checkbox" 
                 className = "checkbox" 
+                type = "checkbox" 
                 style = {{color: themeColor}}
                 checked = {props.checked}
                 onChange = {props.taskOnChangeHandler}

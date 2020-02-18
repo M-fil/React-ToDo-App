@@ -16,8 +16,16 @@ function SwitchTasksListView(props) {
                 border: borderColor,
             }}
         >
-            <input type="checkbox" id="switcher" onChange = {props.changeListView} />
-            <label htmlFor="switcher" className="text" style = {{color: themeColor}}>
+            <input 
+                className = "switcher"
+                type = "checkbox"  
+                onChange = {props.changeListView} 
+            />
+            <label 
+                className="text"
+                htmlFor="switcher" 
+                style = {{color: themeColor}}
+            >
                 Change View
             </label>
         </div>

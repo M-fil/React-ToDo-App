@@ -10,8 +10,8 @@ function DeadlineSortButton(props) {
 
     return (
         <button 
-            type="button" 
             className="deadline-sort-button" 
+            type="button" 
             onClick = {props.sort}
             title = "deadline sort"
             style = {{
@@ -20,7 +20,7 @@ function DeadlineSortButton(props) {
                 border: borderColor,
                 opacity: props.array.length > 1 ? 1 : 0.6,
                 transform: props.isDescSort && props.array.length > 1 ? "rotate(180deg)" : "rotate(360deg)",
-                position: props.position
+                position: props.position,
             }}
         >
             {props.array.length > 1 ? "↑" : "sort"}

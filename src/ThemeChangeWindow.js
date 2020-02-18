@@ -20,7 +20,6 @@ function ImageItem (props) {
 }
 
 function ThemeChangeWindow(props) {
-
     return (
         <div className = "theme-change-window">
             <h3>Background Colors</h3>
@@ -65,7 +64,13 @@ function ThemeChangeWindow(props) {
                 />
             </ul>
 
-            <button type = "button" className = "simple-button radius" onClick = {props.deleteBackgroundImage}>Delete Background Image</button>
+            <button 
+                className = "simple-button radius"
+                type = "button"  
+                onClick = {props.deleteBackgroundImage}
+            >
+                Delete Background Image
+            </button>
         </div>
     )
 }

@@ -17,8 +17,8 @@ function LeftSideBlock(props) {
             }}          
         >
             <button 
-                type = "button"
                 className = "close-button"
+                type = "button"
                 onClick = {props.showTaskForm}
                 style = {{
                     backgroundColor: themeBackgroundColor,

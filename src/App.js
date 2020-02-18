@@ -85,8 +85,9 @@ function App () {
   const [withSquares, setWithSquares] = useState(true);
 
   const [isFormShown, setIsFormShown] = useState(true);
-  const [typeOfTheme, setTypeOfTheme] = useState(themes.dark);
   const [isShown, setIsShown] = useState(false);
+
+  const [typeOfTheme, setTypeOfTheme] = useState(themes.dark);
 
   const showTaskForm = () => {
       setIsFormShown(!isFormShown);
@@ -155,7 +156,7 @@ function App () {
     const sortByDeadline = () => {
       setIsDescSort(!isDescSort);
       sortSample(commonTaskData, isDescSort);
-  }
+    }
 
     const themeColor = typeOfTheme["color"];
     
@@ -175,7 +176,7 @@ function App () {
               <ToDoForm 
                 withSquares = {withSquares}
                 title = {!withSquares 
-                  ? "After switching to the view with Blocks all tasks will be saved in 'I - Urgent Task'"
+                  ? "After switching to the view with Blocks all tasks will be saved in one block"
                   : null
                 }
 
@@ -191,10 +192,8 @@ function App () {
               /> 
             ) : null}
           </LeftSideBlock>
-          }
 
           <div id = "squares">
-
             <ToggleThemeButton 
               showThemeChangeBlock = {showThemeChangeBlock} 
               isShown = {isShown}
@@ -248,4 +247,5 @@ function App () {
       </div>
   );
 }
+
 export default App;
