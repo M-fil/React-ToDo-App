@@ -1,0 +1,56 @@
+.task-container {
+  margin-bottom: 10px;
+  padding: 10px 0 10px 10px;
+}
+
+.task-container-upper {
+  position: relative;
+  
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.task-text {
+  width: 80%;
+  margin-top: 3px;
+  
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.deadline {
+  margin-left: 30px;
+}
+
+.delete-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  
+  height: 40px;
+  margin-left: 10px;
+  padding: 10px 10px;
+  
+  background-color: transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  
+  transition: 0.3s;
+}
+
+.delete-button .icon {
+  font-size: 1.2rem;
+}
+
+.icon.calendar {
+  margin-right: 5px;
+}
+
+.delete-button:hover {
+  background-color: red;
+}
+
+.checkbox-container {
+  margin-bottom: 5px;
+}

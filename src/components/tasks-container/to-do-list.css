@@ -1,0 +1,29 @@
+#main {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 350px 350px;
+  grid-template-rows: 350px 350px;
+}
+
+#squares {
+  z-index: 1;
+   
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 20px;
+}
+
+.common-tasks-list-container {
+  width: 715px;
+  max-height: 50vh;
+  padding: 10px 15px;
+  overflow-y: scroll;
+  border-radius: 10px;
+  opacity: 0.9;
+}
+
+.common-tasks-list-container::-webkit-scrollbar {
+  display: none;
+}
+
