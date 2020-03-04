@@ -4,13 +4,23 @@ import { ThemeContext } from "../app/App";
 import "./task-form.css";
 
 function ToDoForm (props) {
-    const date = new Date();
     const theme = useContext(ThemeContext);
 
     const themeColor = theme.color;
     const themeBackgroundColor = theme.backgroundColor;
     const borderColor = "1px solid " + theme.borderColor;
     
+    let setMinDate = () => {
+        let now = new Date();
+        let year = now.getFullYear();
+        let month = String(now.getMonth()).length === 1 ? '0' + (now.getMonth() + 1) : now.getMonth() + 1;
+        let date = String(now.getDate()).length === 1 ? '0' + now.getDate() : now.getDate();
+
+        let result = `${year}-${month}-${date}`;
+
+        return result;
+    }
+
     return (
         <form 
             onSubmit = {props.addTask} 
@@ -42,7 +52,7 @@ function ToDoForm (props) {
                     deadline = {props.deadline}
                     onChange = {props.deadlineHandleInput}
                     style = {{color: themeColor, borderBottom: borderColor}}
-                    min = {date.getFullYear() + "-0" + (date.getMonth() + 1) + "-" + date.getDate()}
+                    min = {setMinDate()}
 
                     required 
                     autoComplete = "off"
