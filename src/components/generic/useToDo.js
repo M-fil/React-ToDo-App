@@ -5,18 +5,19 @@ function useToDo() {
     const textRef = useRef();
     const deadlineRef = useRef();
 
+    const [currentTask, setCurrentTask] = useState({
+        id: "",
+        text: "",
+        deadline: "",
+        importance: "I - Urgent Task",
+        checked: false,
+    });
+
     const [taskData, setTaskData] = useState({
         tasks1: [],
         tasks2: [],
         tasks3: [],
         tasks4: [],
-        currentTask: {
-            id: "",
-            text: "",
-            deadline: "",
-            importance: "I - Urgent Task",
-            checked: false,
-        }
     });
 
     const [commonTaskData, setCommonTaskData] = useState([]);
@@ -25,47 +26,37 @@ function useToDo() {
         const value = event.target.value;
         const name = event.target.name;
 
-        const currentTask = {
-            ...taskData.currentTask,
+        const task = {
+            ...currentTask,
             id: shortid.generate(),
             [name]: value,
             checked: false,
         }
 
-        setTaskData({
-            ...taskData,
-            currentTask,
-        });
+        setCurrentTask(task);
     }
 
     const addTask = (event) => {
         event.preventDefault();
 
-        const currentTask = {
-            id: "",
-            text: "",
-            deadline: "",
-            importance: taskData.currentTask.importance
-        }
-
-        if (taskData.currentTask.text !== "") {
-            switch(taskData.currentTask.importance) {
+        if (currentTask.text !== "") {
+            switch(currentTask.importance) {
                 case "I - Urgent Task" :
-                    setTaskData({ ...taskData ,tasks1: [taskData.currentTask, ...taskData.tasks1], currentTask: currentTask });
+                    setTaskData({ ...taskData ,tasks1: [currentTask, ...taskData.tasks1], });
                     break;
                 case "II - Important" :
-                    setTaskData({ ...taskData ,tasks2: [taskData.currentTask, ...taskData.tasks2], currentTask: currentTask });
+                    setTaskData({ ...taskData ,tasks2: [currentTask, ...taskData.tasks2], });
                     break;
                 case "III - For Later" :
-                    setTaskData({ ...taskData ,tasks3: [taskData.currentTask, ...taskData.tasks3], currentTask: currentTask });
+                    setTaskData({ ...taskData ,tasks3: [currentTask, ...taskData.tasks3], });
                     break;
                 case "IV - Delegate to Another" :
-                    setTaskData({ ...taskData ,tasks4: [taskData.currentTask, ...taskData.tasks4], currentTask: currentTask });
+                    setTaskData({ ...taskData ,tasks4: [currentTask, ...taskData.tasks4], });
                     break;
                 default : return taskData;
             }
-        }    
-
+        }   
+        
         textRef.current.value = "";
         deadlineRef.current.value = "";
     }
@@ -174,6 +165,8 @@ function useToDo() {
         deleteTaskFromCommonList,
         commonTaskData,
         setCommonTaskData,
+
+        currentTask,
     }
 }
 

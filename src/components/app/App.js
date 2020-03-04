@@ -15,6 +15,26 @@ import images from "../lib/images";
 export const ThemeContext = createContext(themes.dark); 
 
 function App () {
+  const {
+    taskData,
+
+    onChangeHandler,
+
+    addTask,
+    deleteTask1,
+    deleteTask2,
+    deleteTask3,
+    deleteTask4,
+
+    textRef,
+    deadlineRef,
+    
+    deleteTaskFromCommonList,
+    commonTaskData,
+    setCommonTaskData,
+  
+    currentTask} = useToDo();
+
   const [withSquares, setWithSquares] = useState(true);
   const [isShown, setIsShown] = useState(false);
   const [typeOfTheme, setTypeOfTheme] = useState(themes.dark);
@@ -48,33 +68,16 @@ function App () {
     return () => document.body.style.backgroundColor = null;
   }, [typeOfTheme]);
 
-  const {
-    taskData,
+  const { sortSample, isDescSort, setIsDescSort } = useDeadlineSort();
+  
+  const sortByDeadline = () => {
+    console.log('taskData from App', commonTaskData)
+    setIsDescSort(!isDescSort);
+    sortSample(commonTaskData, isDescSort);
+  }
 
-    onChangeHandler,
-
-    addTask,
-    deleteTask1,
-    deleteTask2,
-    deleteTask3,
-    deleteTask4,
-
-    textRef,
-    deadlineRef,
-    
-    deleteTaskFromCommonList,
-    commonTaskData,
-    setCommonTaskData} = useToDo();
-
-    const { sortSample, isDescSort, setIsDescSort } = useDeadlineSort();
-    
-    const sortByDeadline = () => {
-      setIsDescSort(!isDescSort);
-      sortSample(commonTaskData, isDescSort);
-    }
-
-    const themeColor = typeOfTheme["color"];
-    
+  const themeColor = typeOfTheme["color"];
+  
   return (
       <div className="root-container">
         <ThemeContext.Provider value = {typeOfTheme}>
@@ -91,9 +94,9 @@ function App () {
                   : null
                 }
 
-                text = {taskData.currentTask.text}
-                deadline = {taskData.currentTask.deadline}
-                importance = {taskData.currentTask.importance}
+                text = {currentTask.text}
+                deadline = {currentTask.deadline}
+                importance = {currentTask.importance}
                 addTask = {addTask}
                 TextHandleInput = {onChangeHandler}
                 deadlineHandleInput = {onChangeHandler}
