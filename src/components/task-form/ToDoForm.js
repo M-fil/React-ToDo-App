@@ -26,9 +26,10 @@ function ToDoForm (props) {
             onSubmit = {props.addTask} 
             id = "create-task-form" 
         >
-            <label htmlFor = "text" style = {{color: themeColor}}>Add Task: </label>
-            <p>
+            <label className='label-container' style = {{color: themeColor}}>
+                <span className='text'>Add Task:</span>
                 <input 
+                    className='field'
                     type = "text" 
                     name = "text"
 
@@ -40,11 +41,12 @@ function ToDoForm (props) {
                     required 
                     autoComplete = "off"
                 />
-            </p>
+            </label>
 
-            <label htmlFor = "deadline" style = {{color: themeColor}}>Add Deadline: </label>
-            <p>
-                <input 
+            <label className='label-container' style = {{color: themeColor}}>
+                <span className='text'>Add Deadline:</span>
+                <input
+                    className='field' 
                     type = "date" 
                     name = "deadline"
 
@@ -57,14 +59,15 @@ function ToDoForm (props) {
                     required 
                     autoComplete = "off"
                 />
-            </p>
+            </label>
 
             {
                 props.withSquares ? 
-                    <span>
-                        <label htmlFor = "importance" style = {{color: themeColor}}>Add Task Importance: </label>
-                        <p>
+                    <>
+                        <label className='label-container' style = {{color: themeColor}}>
+                            <span className='text'>Add Task Importance:</span> 
                             <select 
+                                className='field'
                                 name = "importance"
             
                                 importance = {props.importance}
@@ -76,14 +79,14 @@ function ToDoForm (props) {
                                 <option value = "III - For Later">III - For Later</option>
                                 <option value = "IV - Delegate to Another">IV - Delegate to Another</option>
                             </select>
-                        </p>
-                    </span>
+                        </label>
+                    </>
                 : null
             }
 
             <button 
                 type = "submit"
-                className = "simple-button radius" 
+                className = "simple-button radius add-task-button" 
                 title = {props.title}
 
                 style = {{

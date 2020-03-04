@@ -2,7 +2,7 @@
   display: none;
 }
 
-label {
+.checkbox-container {
   display: flex;
 
   font-weight: 600;
