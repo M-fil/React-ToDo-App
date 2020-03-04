@@ -8,6 +8,7 @@ import LeftSideBlock from "../task-form/LeftSideBlock";
 import SwitchTasksListView from "../app-view/SwitchTasksListView";
 import DeadlineSortButton from "../sorting/DeadlineSortButton";
 import useDeadlineSort from "../sorting/useDeadlineSort";
+import Footer from '../footer/Footer';
 
 import themes from "../lib/themes";
 import images from "../lib/images";
@@ -79,6 +80,7 @@ function App () {
   const themeColor = typeOfTheme["color"];
   
   return (
+    <>
       <div className="root-container">
         <ThemeContext.Provider value = {typeOfTheme}>
           <SwitchTasksListView 
@@ -158,6 +160,9 @@ function App () {
           </div>
         </ThemeContext.Provider>
       </div>
+
+      <Footer />
+    </>
   );
 }
 

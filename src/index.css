@@ -42,8 +42,6 @@ code {
 
 #root {
   position: relative;
-
-  min-height: calc(80vh - 20px);
 }
 
 #main-title {
@@ -51,5 +49,9 @@ code {
 
   display: flex;
   align-items: center;
+}
+
+.root-container {
+  min-height: calc(80vh - 20px);
 }
 
