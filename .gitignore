@@ -24,3 +24,7 @@ yarn-error.log*
 
 # linters
 /src/.stylelintrc
+
+
+# Others
+src/components/sorting/DeadlineSortButton.test.js

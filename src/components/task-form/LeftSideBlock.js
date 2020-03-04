@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { ThemeContext } from "../app/App";
 
 import FontAwesome from 'react-fontawesome';
@@ -8,6 +8,9 @@ function LeftSideBlock(props) {
     const themeColor = theme.color;
     const themeBackgroundColor = theme.backgroundColor;
     const borderColor = "1px solid " + theme.borderColor;
+
+    const [isFormShown, setIsFormShown] = useState(true);
+    const showTaskForm = () => setIsFormShown(!isFormShown);
 
     return (
         <div 
@@ -21,13 +24,13 @@ function LeftSideBlock(props) {
             <button 
                 className = "close-button"
                 type = "button"
-                onClick = {props.showTaskForm}
+                onClick = {showTaskForm}
                 style = {{
                     backgroundColor: themeBackgroundColor,
                     color: themeColor,
                 }}
             >
-                { props.isFormShown 
+                { isFormShown 
                     ? <>
                         <span>Close</span>
                         <br />
@@ -47,7 +50,9 @@ function LeftSideBlock(props) {
                 ToDo App
             </h2>
 
-            {props.children}
+            {
+                isFormShown ? props.children : null
+            }
         </div>
     )
 }

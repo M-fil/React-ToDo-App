@@ -16,11 +16,9 @@ export const ThemeContext = createContext(themes.dark);
 
 function App () {
   const [withSquares, setWithSquares] = useState(true);
-  const [isFormShown, setIsFormShown] = useState(true);
   const [isShown, setIsShown] = useState(false);
   const [typeOfTheme, setTypeOfTheme] = useState(themes.dark);
 
-  const showTaskForm = () => setIsFormShown(!isFormShown);
   const showThemeChangeBlock = () => setIsShown(!isShown);
   const chooseTheme = (event) => setTypeOfTheme(themes[`${event.target.dataset.color}`]);
   const [backgroundImage, setBackgroundImage] = useState(images.image2);
@@ -85,11 +83,7 @@ function App () {
             withSquares = {withSquares}
           />
 
-          <LeftSideBlock 
-            showTaskForm = {showTaskForm}
-            isFormShown = {isFormShown}
-          >
-            {isFormShown ? (
+          <LeftSideBlock >
               <ToDoForm 
                 withSquares = {withSquares}
                 title = {!withSquares 
@@ -107,7 +101,6 @@ function App () {
                 textRef = {textRef}
                 deadlineRef = {deadlineRef}
               /> 
-            ) : null}
           </LeftSideBlock>
 
           <div id = "squares">

@@ -11,7 +11,8 @@ function DeadlineSortButton(props) {
 
     return (
         <button 
-            className="deadline-sort-button" 
+            className="deadline-sort-button"
+            data-testid = "sort" 
             type="button" 
             onClick = {props.sort}
             title = "deadline sort"
