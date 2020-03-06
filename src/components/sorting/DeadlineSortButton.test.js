@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from "@testing-library/react";
+import { render, cleanup, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import DeadlineSortButton from './DeadlineSortButton';
 
@@ -46,41 +46,22 @@ describe('<DeadlineSortButton />', () => {
     it("Must have text '↑' for an array length greater than 1", () => {
         checkContentByArrayLength(tasks, "↑")
     });
-})
 
-/*it('it sorts an array by deadline property', () => {
-    const sort = jest.fn();
-    const { getByTestId } = render(
-        <DeadlineSortButton 
-            array = {tasks}
-            position = "absolute"
-            sort = {sort}
-            isDescSort = {true}
-        />
-    );
-
-    tasks.forEach(elem => {
+    it('it calles array sorting after clicking on button', () => {
+        const sort = jest.fn();
         const { getByTestId } = render(
-            <TaskItem 
-                key = {elem.id}
-                id = {elem.id}
-                item = {elem} 
-                deleteTask = {jest.fn()} 
+            <DeadlineSortButton 
                 array = {tasks}
-                isChecked = {false}
+                position = "absolute"
+                sort = {sort}
+                isDescSort = {true}
             />
         );
 
-        container.append(getByTestId('task'));
-    });
+        getByTestId('sort').onclick = sort;
+        fireEvent.click(getByTestId('sort'));
 
-    console.log(container.innerHTML);
-
-    fireEvent(
-        getByTestId('sort'),
-        new MouseEvent('click')
-    );
-
-    expect()
-})*/
+        expect(sort).toHaveBeenCalled();
+    })    
+});
 

@@ -74,16 +74,16 @@ describe('<TaskItem />', () => {
         expect(getByTestId('delete-button').firstChild).toBeInTheDocument();
     });
 
-    /*it('delete the item from the DOM', () => {
+    it('it calles deletion of the task element', () => {
         const { getByTestId } = render(taskItem, container);
-        fireEvent(
-            getByTestId('delete-button'),
-            new MouseEvent('click')
-        );
-        expect(getByTestId('delete-button')).not.toBeInTheDocument();
-    });*/
+        const deleteElement = jest.fn();
+        getByTestId('delete-button').onclick = deleteElement;
+        fireEvent.click(getByTestId('delete-button'));
 
-    it('change opacity after checking', async () => {
+        expect(deleteElement).toHaveBeenCalledTimes(1);
+    });
+
+    it('change opacity after checking', () => {
         const { getByTestId } = render(taskItem, container);
         expect(getByTestId('checkbox').checked).toBeFalsy();
         expect(getByTestId('task').style.opacity).toBe('1')

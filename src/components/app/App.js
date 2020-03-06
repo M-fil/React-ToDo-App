@@ -72,7 +72,6 @@ function App () {
   const { sortSample, isDescSort, setIsDescSort } = useDeadlineSort();
   
   const sortByDeadline = () => {
-    console.log('taskData from App', commonTaskData)
     setIsDescSort(!isDescSort);
     sortSample(commonTaskData, isDescSort);
   }
