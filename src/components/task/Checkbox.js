@@ -12,6 +12,7 @@ function Checkbox(props) {
         <label className = "checkbox-container">
             <input 
                 className = "checkbox" 
+                data-testid='checkbox'
                 type = "checkbox" 
                 style = {{color: themeColor}}
                 checked = {props.checked}
@@ -19,6 +20,7 @@ function Checkbox(props) {
             />
             <span 
                 className = "fake"
+                data-testid='fake'
                 style = {{border: borderColor}}
             >
             </span>
