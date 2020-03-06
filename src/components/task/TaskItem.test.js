@@ -1,9 +1,8 @@
 import React from 'react';
-import { render, cleanup, fireEvent, getByText } from '@testing-library/react';
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import { unmountComponentAtNode  } from 'react-dom';
 import '@testing-library/jest-dom';
 import TaskItem from './TaskItem';
-import Checkbox from './Checkbox';
 
 let container = null;
 
@@ -55,7 +54,7 @@ const taskItem = (
     />
 );
 
-describe('TaskItem', () => {
+describe('<TaskItem />', () => {
     it('it renders deadline in task container', () => {
         const { getByTestId } = render(taskItem, container);
         expect(getByTestId('deadline')).toBeInTheDocument();

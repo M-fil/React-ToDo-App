@@ -17,7 +17,7 @@ afterEach(() => {
     cleanup();
 });
 
-describe('Checkbox', () => {
+describe('<Checkbox />', () => {
     const taskOnChangeHandler = jest.fn();
     const checkbox = (
         <Checkbox 

@@ -23,6 +23,7 @@ function ToDoForm (props) {
 
     return (
         <form 
+            data-testid='todo-form'
             onSubmit = {props.addTask} 
             id = "create-task-form" 
         >
@@ -87,7 +88,7 @@ function ToDoForm (props) {
             <button 
                 type = "submit"
                 className = "simple-button radius add-task-button" 
-                title = {props.title}
+                title = {props.withSquares ? "After switching to the view with Blocks all tasks will be saved in one block" : null}
 
                 style = {{
                     border: borderColor,

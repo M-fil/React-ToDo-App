@@ -91,10 +91,6 @@ function App () {
           <LeftSideBlock >
               <ToDoForm 
                 withSquares = {withSquares}
-                title = {!withSquares 
-                  ? "After switching to the view with Blocks all tasks will be saved in one block"
-                  : null
-                }
 
                 text = {currentTask.text}
                 deadline = {currentTask.deadline}

@@ -27,4 +27,3 @@ yarn-error.log*
 
 
 # Others
-src/components/sorting/DeadlineSortButton.test.js

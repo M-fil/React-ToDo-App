@@ -14,6 +14,7 @@ function LeftSideBlock(props) {
 
     return (
         <div 
+            data-testid='left-side-block'
             id = "left-side" 
             style = {{
                 backgroundColor: themeBackgroundColor,
@@ -32,12 +33,11 @@ function LeftSideBlock(props) {
             >
                 { isFormShown 
                     ? <>
-                        <span>Close</span>
-                        <br />
+                        <span>Close</span>     
                         <FontAwesome name = "sort-up" />
                       </>
                     : <>
-                        <span>Open</span><br />
+                        <span>Open</span>
                         <FontAwesome name = "sort-down" />
                       </>
                 }
