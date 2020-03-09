@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, cleanup, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import ToDoForm from './ToDoForm';
 
 afterEach(cleanup);
@@ -16,7 +15,7 @@ const currentTask = {
 const addTask = jest.fn();
 const onChangeHandler = jest.fn();
 
-describe(',ToDoForm />', () => {
+describe('<ToDoForm />', () => {
     const toDoForm = (
         <ToDoForm 
             withSquares = {true}

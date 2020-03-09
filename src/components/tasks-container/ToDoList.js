@@ -13,7 +13,7 @@ function ToDoList (props) {
     const borderColor = "1px solid " + theme.borderColor;
 
     return (
-        <div>
+        <div data-testid='todo-list'>
             {
                 props.withSquares ?
                     <div id="main">

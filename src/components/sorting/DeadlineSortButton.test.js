@@ -1,3 +1,4 @@
+/* eslint-disable no-fallthrough */
 import React from 'react';
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
@@ -32,18 +33,35 @@ describe('<DeadlineSortButton />', () => {
             />
         );
     
+        // eslint-disable-next-line default-case
+        switch(true) {
+            // eslint-disable-next-line no-lone-blocks
+            case (array.length === 0 || array.length === 1): {
+                expect(getByTestId('sort').style.transform).toBe('rotate(360deg)');
+                expect(getByTestId('sort').style.opacity).toBe('0.6');
+            }
+            break;
+
+            // eslint-disable-next-line no-lone-blocks
+            case (array.length > 1): {
+                expect(getByTestId('sort').style.transform).toBe('rotate(180deg)');
+                expect(getByTestId('sort').style.opacity).toBe('1');
+            } 
+            break;
+        }
+        
         expect(getByTestId("sort")).toHaveTextContent(content);
     }
     
-    it("Must have text 'sort' for an emty array", () => {
-        checkContentByArrayLength([], "sort")
+    it("Must have text 'sort' and corresponding styles for an emty array", () => {
+        checkContentByArrayLength([], "sort");
     });
     
-    it("Must have text 'sort' for an array with single element", () => {
+    it("Must have text 'sort' and corresponding styles for an array with single element", () => {
         checkContentByArrayLength([{ id: 1, deadline: '2020-04-04' }], "sort")
     });
     
-    it("Must have text '↑' for an array length greater than 1", () => {
+    it("Must have text '↑' and corresponding styles for an array length greater than 1", () => {
         checkContentByArrayLength(tasks, "↑")
     });
 
@@ -62,6 +80,7 @@ describe('<DeadlineSortButton />', () => {
         fireEvent.click(getByTestId('sort'));
 
         expect(sort).toHaveBeenCalled();
+        expect(getByTestId('sort').style.transform).toBe('rotate(180deg)');
     })    
 });
 
