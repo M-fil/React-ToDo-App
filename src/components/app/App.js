@@ -79,7 +79,7 @@ function App () {
   const themeColor = typeOfTheme["color"];
   
   return (
-    <>
+    <div data-testid='app'>
       <div className="root-container">
         <ThemeContext.Provider value = {typeOfTheme}>
           <SwitchTasksListView 
@@ -157,7 +157,7 @@ function App () {
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 }
 
