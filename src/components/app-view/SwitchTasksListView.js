@@ -11,6 +11,7 @@ function SwitchTasksListView(props) {
     return (
         <div 
             className="switcher-container"
+            data-testid='switcher'
             style = {{
                 backgroundColor: themeBackgroundColor,
                 border: borderColor,
@@ -18,6 +19,7 @@ function SwitchTasksListView(props) {
         >
             <input 
                 className = "switcher"
+                id='switcher'
                 type = "checkbox"  
                 onChange = {props.changeListView} 
             />

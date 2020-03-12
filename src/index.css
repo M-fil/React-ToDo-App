@@ -16,8 +16,8 @@ body {
 
   background-image: url("./components/lib/images/image2.jfif");
   background-repeat: no-repeat;
-  background-position: center;
   background-size: cover;
+  background-attachment: fixed;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
