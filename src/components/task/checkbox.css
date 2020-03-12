@@ -44,15 +44,6 @@ select:focus {
   box-shadow: 2px 1px 5px;
 }
 
-.close-button {
-  padding: 10px 5px;
-
-  font-size: 1.2rem;
-
-  border: none;
-  cursor: pointer;
-}
-
 .radius {
   border-radius: 10px;
 }

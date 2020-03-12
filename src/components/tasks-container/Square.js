@@ -23,6 +23,7 @@ function Square(props) {
     return (
         <div 
             className="square" 
+            data-testid='square'
             style = {{
               backgroundColor: themeBackgroundColor,
               border: borderColor,

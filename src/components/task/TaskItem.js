@@ -14,6 +14,8 @@ function TaskItem({ id, item, deleteTask, array, isChecked }) {
     const [check, setCheck] = useState(isChecked);
 
     const onHandleChecked = (event) => {
+        event.stopPropagation();
+
         let id = event.target.closest("li").id;
         let result  = array.find(item => item.id === id);
         result.checked = !result.checked;
@@ -22,7 +24,8 @@ function TaskItem({ id, item, deleteTask, array, isChecked }) {
 
     return (
         <li 
-            className = "task-container" 
+            className = "task-container"
+            data-testid='task' 
             id = {id}
             style = {{
                 opacity: check ? 0.5 : 1,
@@ -37,6 +40,7 @@ function TaskItem({ id, item, deleteTask, array, isChecked }) {
 
                 <span 
                     className = "task-text" 
+                    data-testid='text'
                     ref = {taskTextRef}
                     style = {{
                         color: themeColor,
@@ -48,6 +52,7 @@ function TaskItem({ id, item, deleteTask, array, isChecked }) {
 
                 <button 
                     className = "delete-button"
+                    data-testid='delete-button'
                     style = {{border: themeColor}} 
                     onClick = {() => deleteTask(item.id)}
                 >
@@ -61,6 +66,7 @@ function TaskItem({ id, item, deleteTask, array, isChecked }) {
         
             <span 
                 className = "deadline" 
+                data-testid='deadline'
                 style = {{color: themeColor}}
             > 
                 <FontAwesome 

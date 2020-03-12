@@ -8,6 +8,7 @@ import LeftSideBlock from "../task-form/LeftSideBlock";
 import SwitchTasksListView from "../app-view/SwitchTasksListView";
 import DeadlineSortButton from "../sorting/DeadlineSortButton";
 import useDeadlineSort from "../sorting/useDeadlineSort";
+import Footer from '../footer/Footer';
 
 import themes from "../lib/themes";
 import images from "../lib/images";
@@ -71,7 +72,6 @@ function App () {
   const { sortSample, isDescSort, setIsDescSort } = useDeadlineSort();
   
   const sortByDeadline = () => {
-    console.log('taskData from App', commonTaskData)
     setIsDescSort(!isDescSort);
     sortSample(commonTaskData, isDescSort);
   }
@@ -79,6 +79,7 @@ function App () {
   const themeColor = typeOfTheme["color"];
   
   return (
+    <div data-testid='app'>
       <div className="root-container">
         <ThemeContext.Provider value = {typeOfTheme}>
           <SwitchTasksListView 
@@ -89,10 +90,6 @@ function App () {
           <LeftSideBlock >
               <ToDoForm 
                 withSquares = {withSquares}
-                title = {!withSquares 
-                  ? "After switching to the view with Blocks all tasks will be saved in one block"
-                  : null
-                }
 
                 text = {currentTask.text}
                 deadline = {currentTask.deadline}
@@ -158,6 +155,9 @@ function App () {
           </div>
         </ThemeContext.Provider>
       </div>
+
+      <Footer />
+    </div>
   );
 }
 

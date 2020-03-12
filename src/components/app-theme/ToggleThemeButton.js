@@ -11,8 +11,9 @@ function ToggleThemeButton(props) {
     return (
         <div className = "change-theme-container">
             <button 
+                className = "simple-button radius"
+                data-testid='change-theme-button' 
                 type = "button" 
-                className = "simple-button radius" 
                 onClick = {props.showThemeChangeBlock}
                 style = {{
                     backgroundColor: themeBackgroundColor,

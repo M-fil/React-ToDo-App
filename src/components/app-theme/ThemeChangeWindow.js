@@ -1,7 +1,7 @@
 import React from 'react';
 import "./theme-colors.css";
 
-function ColorItem (props) {   
+export function ColorItem (props) {   
     return (
         <li 
             className = {"list-item " + props.color} 
@@ -11,7 +11,7 @@ function ColorItem (props) {
     )
 }
 
-function ImageItem (props) {
+export function ImageItem (props) {
     return (
         <li className = "item">
             <img src = {props.imagePath} onClick = {props.changeBackground} alt = "" />
@@ -21,7 +21,7 @@ function ImageItem (props) {
 
 function ThemeChangeWindow(props) {
     return (
-        <div className = "theme-change-window">
+        <div className = "theme-change-window" data-testid='theme-change-window'>
             <h3>Background Colors</h3>
             <ul className = "list">
                 <ColorItem color = "dark" chooseTheme = {props.chooseTheme} />
@@ -29,8 +29,8 @@ function ThemeChangeWindow(props) {
                 <ColorItem color = "red" chooseTheme = {props.chooseTheme} />
                 <ColorItem color = "orange" chooseTheme = {props.chooseTheme} />
                 <ColorItem color = "yellow" chooseTheme = {props.chooseTheme} />
-                <ColorItem color = "pink" chooseTheme = {props.chooseTheme} />
                 <ColorItem color = "purple" chooseTheme = {props.chooseTheme} />
+                <ColorItem color = "pink" chooseTheme = {props.chooseTheme} />
                 <ColorItem color = "blue" chooseTheme = {props.chooseTheme} />
                 <ColorItem color = "skyblue" chooseTheme = {props.chooseTheme} />
                 <ColorItem color = "brown" chooseTheme = {props.chooseTheme} />

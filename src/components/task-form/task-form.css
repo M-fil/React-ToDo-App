@@ -27,6 +27,20 @@
   margin-left: 20px;
 }
 
+.close-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px 5px;
+
+  font-size: 1.2rem;
+
+  border: none;
+  cursor: pointer;
+}
+
 .label-container {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 1.1rem;

@@ -17,7 +17,7 @@ function useDeadlineSort() {
                 });
             break;
 
-            default: return array;
+            default: return array; 
         }
     }
 

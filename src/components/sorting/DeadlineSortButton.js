@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { ThemeContext } from "../app/App";
 import "./sort-button.css";
 
-
 function DeadlineSortButton(props) {
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;

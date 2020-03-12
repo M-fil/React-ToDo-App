@@ -16,8 +16,9 @@ body {
 
   background-image: url("./components/lib/images/image2.jfif");
   background-repeat: no-repeat;
-  background-position: center;
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -42,8 +43,6 @@ code {
 
 #root {
   position: relative;
-
-  min-height: calc(80vh - 20px);
 }
 
 #main-title {
@@ -51,5 +50,9 @@ code {
 
   display: flex;
   align-items: center;
+}
+
+.root-container {
+  min-height: calc(80vh - 20px);
 }
 
