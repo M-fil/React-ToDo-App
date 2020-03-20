@@ -6,7 +6,9 @@ import Square from "./Square";
 import TaskItem from "../task/TaskItem";
 import { ThemeContext } from "../app/App";
 
-function ToDoList (props) {
+import { connect } from 'react-redux';
+
+function ToDoList ({ tasks1, tasks2, tasks3, tasks4, withSquares, props }) {
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
     const themeBackgroundColor = `${theme.backgroundColor}`;
@@ -15,27 +17,23 @@ function ToDoList (props) {
     return (
         <div data-testid='todo-list'>
             {
-                props.withSquares ?
+                withSquares ?
                     <div id="main">
                         <Square 
-                            square = {props.square1} 
+                            square = {tasks1} 
                             squareNumber = "I - Urgent" 
-                            deleteTask = {props.deleteTask1}
                         />
                         <Square 
-                            square = {props.square2} 
+                            square = {tasks2} 
                             squareNumber = "II - Important"
-                            deleteTask = {props.deleteTask2}
                         />
                         <Square 
-                            square = {props.square3} 
+                            square = {tasks3} 
                             squareNumber = "III - For Later"
-                            deleteTask = {props.deleteTask3}
                         />
                         <Square 
-                            square = {props.square4} 
+                            square = {tasks4} 
                             squareNumber = "IV - Delegate to Another"
-                            deleteTask = {props.deleteTask4}
                         />
                     </div>
                 : 
@@ -60,10 +58,7 @@ function ToDoList (props) {
                                         return <TaskItem 
                                                     key = {item.id}
                                                     id = {item.id}
-                                                    item = {item} 
-                                                    deleteTask = {props.deleteTask} 
-                                                    array = {props.commonList}
-                                                    isChecked = {item.checked}
+                                                    task = {item} 
                                                 />
                                     })
                                 }
@@ -75,4 +70,13 @@ function ToDoList (props) {
     );
 }
 
-export default ToDoList;
+const mapState = (state) => {
+    return {
+        tasks1: state.tasks1,
+        tasks2: state.tasks2,
+        tasks3: state.tasks3,
+        tasks4: state.tasks4,
+    }
+}
+
+export default connect(mapState)(ToDoList);

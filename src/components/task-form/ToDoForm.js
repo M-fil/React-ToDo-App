@@ -1,9 +1,43 @@
-import React, { useContext } from "react";
+import React, { useContext, useReducer, useRef } from "react";
 
 import { ThemeContext } from "../app/App";
 import "./task-form.css";
 
-function ToDoForm (props) {
+// Redux
+import { connect } from 'react-redux';
+import { addTask } from '../../redux/tasks_types/tasksTypesActions';
+
+const initialState = {
+    text: '',
+    deadline: '',
+    importance: 'I - Urgent Task',
+}
+
+const reducer = (state, action) => {
+    switch(action.type) {
+        case 'TEXT': return {
+            ...state,
+            text: action.payload,
+        }
+
+        case 'DEADLINE': return {
+            ...state,
+            deadline: action.payload,
+        }
+
+        case 'IMPORTANCE': return {
+            ...state,
+            importance: action.payload,
+        }
+
+        default: return state;
+    }
+}
+
+function ToDoForm ({ addTask, withSquares }) {
+    const textRef = useRef();
+    const deadlineRef = useRef();
+
     const theme = useContext(ThemeContext);
 
     const themeColor = theme.color;
@@ -21,10 +55,20 @@ function ToDoForm (props) {
         return result;
     }
 
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    const addNewTask = (event) => {
+        event.preventDefault();
+        addTask(state.text, state.deadline, state.importance);
+
+        textRef.current.value = '';
+        deadlineRef.current.value = '';
+    }
+
     return (
         <form 
             data-testid='todo-form'
-            onSubmit = {props.addTask} 
+            onSubmit = {addNewTask} 
             id = "create-task-form" 
         >
             <label className='label-container' style = {{color: themeColor}}>
@@ -34,9 +78,8 @@ function ToDoForm (props) {
                     type = "text" 
                     name = "text"
 
-                    ref = {props.textRef}
-                    text = {props.text}
-                    onChange = {props.TextHandleInput}
+                    ref = {textRef}
+                    onChange = {(event) => dispatch({ type: 'TEXT', payload: event.target.value })}
                     style = {{color: themeColor, borderBottom: borderColor}}
 
                     required 
@@ -51,9 +94,8 @@ function ToDoForm (props) {
                     type = "date" 
                     name = "deadline"
 
-                    ref = {props.deadlineRef}
-                    deadline = {props.deadline}
-                    onChange = {props.deadlineHandleInput}
+                    ref = {deadlineRef}
+                    onChange = {(event) => dispatch({ type: 'DEADLINE', payload: event.target.value })}
                     style = {{color: themeColor, borderBottom: borderColor}}
                     min = {setMinDate()}
 
@@ -63,7 +105,7 @@ function ToDoForm (props) {
             </label>
 
             {
-                props.withSquares ? 
+                withSquares ? 
                     <>
                         <label className='label-container' style = {{color: themeColor}}>
                             <span className='text'>Add Task Importance:</span> 
@@ -71,8 +113,7 @@ function ToDoForm (props) {
                                 className='field'
                                 name = "importance"
             
-                                importance = {props.importance}
-                                onChange = {props.importanceHandleInput}
+                                onChange = {(event) => dispatch({ type: 'IMPORTANCE', payload: event.target.value })}
                                 style = {{color: themeColor, borderBottom: borderColor}} 
                             >
                                 <option value = "I - Urgent Task">I - Urgent</option>
@@ -88,7 +129,7 @@ function ToDoForm (props) {
             <button 
                 type = "submit"
                 className = "simple-button radius add-task-button" 
-                title = {props.withSquares ? "After switching to the view with Blocks all tasks will be saved in one block" : null}
+                title = {withSquares ? "After switching to the view with Blocks all tasks will be saved in one block" : null}
 
                 style = {{
                     border: borderColor,
@@ -102,4 +143,4 @@ function ToDoForm (props) {
     );
 }
 
-export default ToDoForm;
+export default connect(null, { addTask })(ToDoForm);

@@ -6,8 +6,9 @@ import { ThemeContext } from "../app/App";
 import TaskItem from "../task/TaskItem";
 import useDeadlineSort from "../sorting/useDeadlineSort";
 import DeadlineSortButton from "../sorting/DeadlineSortButton";
+import { connect } from 'react-redux';
 
-function Square(props) {    
+function Square({ square, squareNumber }) {    
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
     const themeBackgroundColor = theme.backgroundColor;
@@ -17,12 +18,12 @@ function Square(props) {
 
     const sortByDeadline = () => {
         setIsDescSort(!isDescSort);
-        sortSample(props.square, isDescSort);
+        sortSample(square, isDescSort);
     }
 
     return (
         <div 
-            className="square" 
+            className='square'
             data-testid='square'
             style = {{
               backgroundColor: themeBackgroundColor,
@@ -30,22 +31,19 @@ function Square(props) {
             }}
         >
             <DeadlineSortButton 
-                array = {props.square} 
+                array = {square} 
                 sort = {sortByDeadline} 
                 isDescSort = {isDescSort}
                 position = "absolute"
             />
 
-            <h3 style = {{color: themeColor}}> {props.squareNumber} </h3>
+            <h3 style = {{color: themeColor}}> {squareNumber} </h3>
             <ul className = "list"> 
-                {props.square.map((item) => {
+                {square.map((item) => {
                     return <TaskItem 
                                 key = {item.id}
                                 id = {item.id}
-                                item = {item} 
-                                deleteTask = {props.deleteTask}
-                                array = {props.square}
-                                isChecked = {item.checked}
+                                task = {item} 
                             />
                 })} 
             </ul>
@@ -53,4 +51,4 @@ function Square(props) {
     )
 }
 
-export default Square;
+export default connect()(Square);

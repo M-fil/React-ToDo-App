@@ -13,6 +13,9 @@ import Footer from '../footer/Footer';
 import themes from "../lib/themes";
 import images from "../lib/images";
 
+// Redux
+
+
 export const ThemeContext = createContext(themes.dark); 
 
 function App () {
@@ -90,16 +93,6 @@ function App () {
           <LeftSideBlock >
               <ToDoForm 
                 withSquares = {withSquares}
-
-                text = {currentTask.text}
-                deadline = {currentTask.deadline}
-                importance = {currentTask.importance}
-                addTask = {addTask}
-                TextHandleInput = {onChangeHandler}
-                deadlineHandleInput = {onChangeHandler}
-                importanceHandleInput = {onChangeHandler}
-                textRef = {textRef}
-                deadlineRef = {deadlineRef}
               /> 
           </LeftSideBlock>
 

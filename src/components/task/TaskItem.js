@@ -1,16 +1,20 @@
-import React, { useState, useContext, useRef } from 'react'
+import React, { useContext } from 'react'
 import Checkbox from "./Checkbox";
 import { ThemeContext } from "../app/App";
 import "./task-item.css";
 
 import FontAwesome from 'react-fontawesome';
 
-function TaskItem({ id, item, deleteTask, array, isChecked }) {
+// Redux
+import { connect } from 'react-redux';
+import { deleteTask } from '../../redux/tasks_types/tasksTypesActions';
+
+function TaskItem({ deleteTask, task }) {
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
     const borderColor = "1px solid " + theme.borderColor;
 
-    const taskTextRef = useRef();
+    /*const taskTextRef = useRef();
     const [check, setCheck] = useState(isChecked);
 
     const onHandleChecked = (event) => {
@@ -20,41 +24,41 @@ function TaskItem({ id, item, deleteTask, array, isChecked }) {
         let result  = array.find(item => item.id === id);
         result.checked = !result.checked;
         setCheck(result.checked);
-    }
+    }*/
+
 
     return (
         <li 
             className = "task-container"
             data-testid='task' 
-            id = {id}
+            id = {task.id}
+            data-imporatnce={task.importance}
             style = {{
-                opacity: check ? 0.5 : 1,
+                opacity: task.checked ? 0.5 : 1,
                 borderBottom: borderColor,
             }}
         >
             <div className = "task-container-upper">   
                 <Checkbox 
-                    checked = {check}
-                    taskOnChangeHandler = {onHandleChecked}
+                    task = {task}
                 />
 
                 <span 
                     className = "task-text" 
                     data-testid='text'
-                    ref = {taskTextRef}
                     style = {{
                         color: themeColor,
-                        textDecoration: check ? "line-through" : "none",
+                        textDecoration: task.checked ? "line-through" : "none",
                     }}
                 > 
-                    {item.text}
+                    {task.text}
                 </span>
 
                 <button 
                     className = "delete-button"
                     data-testid='delete-button'
                     style = {{border: themeColor}} 
-                    onClick = {() => deleteTask(item.id)}
+                    onClick = {() => deleteTask(task.id, task.importance)}
                 >
                     <FontAwesome 
                         className = "icon"
@@ -74,9 +78,9 @@ function TaskItem({ id, item, deleteTask, array, isChecked }) {
                     name="calendar"
                     style = {{color: themeColor}}
                 />
-                 {item.deadline} 
+                 {task.deadline} 
             </span>
         </li>)
 }
 
-export default TaskItem;
+export default connect(null, { deleteTask })(TaskItem);
