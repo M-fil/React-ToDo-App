@@ -27,7 +27,7 @@ const tasksTypesReducer = (state = initialState, action) => {
                     ...state,
                     tasks4: [action.payload, ...state.tasks4],
                 }
-                default : return state;
+                default : return {...state};
             }
         }
 
@@ -35,27 +35,31 @@ const tasksTypesReducer = (state = initialState, action) => {
             switch(action.payload.importance) {
                 case "I - Urgent Task" : return {
                     ...state,
-                    tasks1: state.tasks1.filter(id => action.payload.id !== id),
+                    tasks1: state.tasks1.filter(elem => action.payload.id !== elem.id),
                 }
                 case "II - Important" : return {
                     ...state,
-                    tasks2: state.tasks2.filter(id => action.payload.id !== id),
+                    tasks2: state.tasks2.filter(elem => action.payload.id !== elem.id),
                 }
                 case "III - For Later" : return {
                     ...state,
-                    tasks3: state.tasks3.filter(id => action.payload.id !== id),
+                    tasks3: state.tasks3.filter(elem => action.payload.id !== elem.id),
                 }
                 case "IV - Delegate to Another" : return {
                     ...state,
-                    tasks4: state.tasks4.filter(id => action.payload.id !== id),
+                    tasks4: state.tasks4.filter(elem => action.payload.id !== elem.id),
                 }
                 default : return state;
             }
         }
 
-        case TOGGLE_TASK: return Object.values(state).map(tasks => {
-            let findedTask = tasks.find(task => task.id = action.payload.id);
-            findedTask.checked = !findedTask.checked;
+        case TOGGLE_TASK: Object.values(state).map(tasks => {
+            for (let task of tasks) {
+                if (task.id === action.payload.id) {
+                    console.log("+++", task);
+                    task.checked = !task.checked;
+                }
+            }
         })
 
         default: return state;
