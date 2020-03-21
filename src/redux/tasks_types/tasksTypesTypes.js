@@ -1,9 +1,11 @@
 const ADD_TASK = 'ADD_TASK';
 const DELETE_TASK = 'DELETE_TASK';
 const TOGGLE_TASK = 'TOGGLE_TASK'; 
+const COMBINE_TASKS = 'COMBINE_TASKS';
 
 export { 
     ADD_TASK, 
     DELETE_TASK,
-    TOGGLE_TASK 
+    TOGGLE_TASK,
+    COMBINE_TASKS,
 };

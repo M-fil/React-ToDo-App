@@ -8,7 +8,7 @@ import { ThemeContext } from "../app/App";
 
 import { connect } from 'react-redux';
 
-function ToDoList ({ tasks1, tasks2, tasks3, tasks4, withSquares, props }) {
+function ToDoList ({ tasks1, tasks2, tasks3, tasks4, commonList, withSquares }) {
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
     const themeBackgroundColor = `${theme.backgroundColor}`;
@@ -42,11 +42,11 @@ function ToDoList ({ tasks1, tasks2, tasks3, tasks4, withSquares, props }) {
                     style = {{
                         backgroundColor: themeBackgroundColor,
                         border: borderColor,
-                        textAlign: props.commonList.length === 0 ? "center" : "left",
+                        textAlign: commonList.length === 0 ? "center" : "left",
                     }}
                 >
                     {
-                        props.commonList.length === 0 
+                        commonList.length === 0 
                             ? 
                             <span style = {{color: themeColor}}>
                                 No any tasks.
@@ -54,7 +54,7 @@ function ToDoList ({ tasks1, tasks2, tasks3, tasks4, withSquares, props }) {
                             :
                             <ul>
                                 {
-                                    props.commonList.map((item) => {
+                                    Object.values(commonList).map((item) => {
                                         return <TaskItem 
                                                     key = {item.id}
                                                     id = {item.id}
@@ -76,6 +76,8 @@ const mapState = (state) => {
         tasks2: { ...state.tasks2 },
         tasks3: { ...state.tasks3 },
         tasks4: { ...state.tasks4 },
+
+        commonList: state.commonList,
     }
 }
 

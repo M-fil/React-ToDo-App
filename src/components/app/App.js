@@ -14,30 +14,13 @@ import themes from "../lib/themes";
 import images from "../lib/images";
 
 // Redux
+import { connect } from 'react-redux';
+import { combineTasks } from '../../redux/tasks_types/tasksTypesActions';
 
 
 export const ThemeContext = createContext(themes.dark); 
 
-function App () {
-  const {
-    taskData,
-
-    onChangeHandler,
-
-    addTask,
-    deleteTask1,
-    deleteTask2,
-    deleteTask3,
-    deleteTask4,
-
-    textRef,
-    deadlineRef,
-    
-    deleteTaskFromCommonList,
-    commonTaskData,
-    setCommonTaskData,
-  
-    currentTask} = useToDo();
+function App ({ combineTasks, commonTaskData }) {
 
   const [withSquares, setWithSquares] = useState(true);
   const [isShown, setIsShown] = useState(false);
@@ -52,14 +35,7 @@ function App () {
   const changeListView = () => {
       setWithSquares(!withSquares);
 
-      setCommonTaskData(
-        [
-          ...taskData.tasks1,
-          ...taskData.tasks2,
-          ...taskData.tasks3,
-          ...taskData.tasks4,
-        ]
-      ); 
+      combineTasks();
   }
   
   useEffect(() => {
@@ -78,6 +54,7 @@ function App () {
     setIsDescSort(!isDescSort);
     sortSample(commonTaskData, isDescSort);
   }
+  
 
   const themeColor = typeOfTheme["color"];
   
@@ -86,8 +63,7 @@ function App () {
       <div className="root-container">
         <ThemeContext.Provider value = {typeOfTheme}>
           <SwitchTasksListView 
-            changeListView = {changeListView} 
-            withSquares = {withSquares}
+            combineTasks = {changeListView}
           />
 
           <LeftSideBlock >
@@ -133,17 +109,6 @@ function App () {
 
             <ToDoList 
               withSquares = {withSquares}
-              commonList = {commonTaskData}
-              deleteTask = {deleteTaskFromCommonList}
-              
-              deleteTask1 = {deleteTask1}
-              deleteTask2 = {deleteTask2}
-              deleteTask3 = {deleteTask3}
-              deleteTask4 = {deleteTask4}
-              square1 = {taskData.tasks1}
-              square2 = {taskData.tasks2}
-              square3 = {taskData.tasks3}
-              square4 = {taskData.tasks4}
             />
           </div>
         </ThemeContext.Provider>
@@ -154,4 +119,15 @@ function App () {
   );
 }
 
-export default App;
+const mapState = (state) => {
+  return {
+    ...state,
+    commonTaskData: state.commonListk,
+  }
+}
+
+const mapDispatch = {
+  combineTasks,
+}
+
+export default connect(mapState, mapDispatch)(App);

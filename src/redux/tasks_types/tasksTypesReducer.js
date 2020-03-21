@@ -1,10 +1,18 @@
-import { ADD_TASK, DELETE_TASK, TOGGLE_TASK } from './tasksTypesTypes';
+import { 
+    ADD_TASK, 
+    DELETE_TASK, 
+    TOGGLE_TASK, 
+    COMBINE_TASKS 
+} from './tasksTypesTypes';
+import shortid from 'shortid';
 
-const  initialState = {
+const initialState = {
     tasks1: {},
     tasks2: {},
     tasks3: {},
     tasks4: {},
+
+    commonList: {}
 }
 
 const tasksTypesReducer = (state = initialState, action) => {
@@ -74,6 +82,16 @@ const tasksTypesReducer = (state = initialState, action) => {
                 }
                 default : return state;
             }
+        }
+
+        case COMBINE_TASKS: return {
+            ...state,
+            commonList: {
+                ...state.tasks1,
+                ...state.tasks2,
+                ...state.tasks3,
+                ...state.tasks4,
+            },
         }
 
         default: return state;

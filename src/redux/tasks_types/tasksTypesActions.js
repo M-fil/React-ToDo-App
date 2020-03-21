@@ -1,4 +1,9 @@
-import { ADD_TASK, DELETE_TASK, TOGGLE_TASK } from './tasksTypesTypes';
+import { 
+    ADD_TASK, 
+    DELETE_TASK, 
+    TOGGLE_TASK, 
+    COMBINE_TASKS 
+} from './tasksTypesTypes';
 import shortid from 'shortid';
 
 const addTask = (text, deadline, importance) => {
@@ -28,4 +33,10 @@ const toggleTask = (id, importance) => {
     }
 }
 
-export { addTask, deleteTask, toggleTask };
+const combineTasks = () => {
+    return {
+        type: COMBINE_TASKS,
+    }
+}
+
+export { addTask, deleteTask, toggleTask, combineTasks };
