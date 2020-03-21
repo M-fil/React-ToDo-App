@@ -15,12 +15,12 @@ function Checkbox({ toggleTask, task }) {
     return (
         <label className = "checkbox-container">
             <input 
-                className = "checkbox" 
+                className = 'checkbox'
                 data-testid='checkbox'
                 type = "checkbox" 
                 style = {{color: themeColor}}
                 checked = {task.checked}
-                onChange = {() => toggleTask(task.id)}
+                onChange = {() => toggleTask(task.id, task.importance)}
             />
             <span 
                 className = "fake"
@@ -30,6 +30,26 @@ function Checkbox({ toggleTask, task }) {
             </span>
         </label>
     )
+}
+
+const mapState = (state) => {
+    const { payload } = toggleTask();
+    console.log('PAYLOAD', payload)
+    let findedTask = null;
+
+    Object.values(state).forEach(tasks => {
+        tasks.forEach(task => {
+            if (task.id === payload.id) {
+                console.log("FIND ->", task)
+                findedTask = task;
+                return;
+            }
+        })
+    })
+
+    return {
+        isChecked: findedTask.checked
+    }
 }
 
 export default connect(null, { toggleTask })(Checkbox);

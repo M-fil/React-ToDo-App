@@ -72,10 +72,10 @@ function ToDoList ({ tasks1, tasks2, tasks3, tasks4, withSquares, props }) {
 
 const mapState = (state) => {
     return {
-        tasks1: state.tasks1,
-        tasks2: state.tasks2,
-        tasks3: state.tasks3,
-        tasks4: state.tasks4,
+        tasks1: { ...state.tasks1 },
+        tasks2: { ...state.tasks2 },
+        tasks3: { ...state.tasks3 },
+        tasks4: { ...state.tasks4 },
     }
 }
 

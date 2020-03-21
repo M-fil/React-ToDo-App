@@ -6,9 +6,8 @@ import { ThemeContext } from "../app/App";
 import TaskItem from "../task/TaskItem";
 import useDeadlineSort from "../sorting/useDeadlineSort";
 import DeadlineSortButton from "../sorting/DeadlineSortButton";
-import { connect } from 'react-redux';
 
-function Square({ square, squareNumber }) {    
+function Square({ square, squareNumber, toggleTask }) {    
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
     const themeBackgroundColor = theme.backgroundColor;
@@ -39,7 +38,7 @@ function Square({ square, squareNumber }) {
 
             <h3 style = {{color: themeColor}}> {squareNumber} </h3>
             <ul className = "list"> 
-                {square.map((item) => {
+                {Object.values(square).map((item) => {
                     return <TaskItem 
                                 key = {item.id}
                                 id = {item.id}
@@ -51,4 +50,4 @@ function Square({ square, squareNumber }) {
     )
 }
 
-export default connect()(Square);
+export default (Square);

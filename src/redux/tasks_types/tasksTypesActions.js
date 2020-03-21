@@ -21,10 +21,10 @@ const deleteTask = (id, importance) => {
     }
 }
 
-const toggleTask = (id) => {
+const toggleTask = (id, importance) => {
     return {
         type: TOGGLE_TASK,
-        payload: { id }
+        payload: { id, importance }
     }
 }
 

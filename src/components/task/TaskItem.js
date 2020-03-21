@@ -14,19 +14,6 @@ function TaskItem({ deleteTask, task }) {
     const themeColor = theme.color;
     const borderColor = "1px solid " + theme.borderColor;
 
-    /*const taskTextRef = useRef();
-    const [check, setCheck] = useState(isChecked);
-
-    const onHandleChecked = (event) => {
-        event.stopPropagation();
-
-        let id = event.target.closest("li").id;
-        let result  = array.find(item => item.id === id);
-        result.checked = !result.checked;
-        setCheck(result.checked);
-    }*/
-
-
     return (
         <li 
             className = "task-container"
