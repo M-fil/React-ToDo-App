@@ -63,8 +63,7 @@ function ToDoForm ({ addTask, combineTasks, withSquares }) {
 
         textRef.current.value = '';
         deadlineRef.current.value = '';
-        
-        combineTasks();
+        combineTasks()
     }
 
     return (
@@ -118,7 +117,7 @@ function ToDoForm ({ addTask, combineTasks, withSquares }) {
                                 onChange = {(event) => dispatch({ type: 'IMPORTANCE', payload: event.target.value })}
                                 style = {{color: themeColor, borderBottom: borderColor}} 
                             >
-                                <option value = "I - Urgent Task">I - Urgent</option>
+                                <option value = "I - Urgent">I - Urgent</option>
                                 <option value = "II - Important">II - Important</option>
                                 <option value = "III - For Later">III - For Later</option>
                                 <option value = "IV - Delegate to Another">IV - Delegate to Another</option>

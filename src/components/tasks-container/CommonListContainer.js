@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import "./to-do-list.css";
 import TaskItem from "../task/TaskItem";
 import { ThemeContext } from "../app/App";
-import { connect } from 'react-redux';
 
 function CommonListContainer ({ commonList }) {
     const theme = useContext(ThemeContext);

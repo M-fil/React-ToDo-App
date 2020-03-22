@@ -1,6 +1,5 @@
 import React, { useState, createContext, useEffect } from 'react';
 
-import ToDoForm from "../task-form/ToDoForm";
 import ToDoList from '../tasks-container/ToDoList';
 import ToggleThemeButton from "../app-theme/ToggleThemeButton";
 import LeftSideBlock from "../task-form/LeftSideBlock";
@@ -62,11 +61,7 @@ function App ({ sortTasks, combineTasks, commonList }) {
             changeListView = {changeListView}
           />
 
-          <LeftSideBlock >
-              <ToDoForm 
-                withSquares = {withSquares}
-              /> 
-          </LeftSideBlock>
+          <LeftSideBlock withSquares={withSquares} />
 
           <div id = "squares">
             <ToggleThemeButton 

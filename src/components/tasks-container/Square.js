@@ -16,12 +16,10 @@ function Square({ square, squareNumber, sortTasks }) {
     const borderColor = "1px solid " + theme.borderColor;
 
     const [isDescSort, setIsDescSort] = useState(false);
-  
     const sortByDeadline = () => {
       setIsDescSort(!isDescSort);
       sortTasks(isDescSort, squareNumber)
     }
-    
 
     return (
         <div 
@@ -42,11 +40,11 @@ function Square({ square, squareNumber, sortTasks }) {
             <h3 style = {{color: themeColor}}> {squareNumber} </h3>
             <ul className = "list"> 
                 {square.map((item) => {
-                        return <TaskItem 
-                                    key = {item.id}
-                                    id = {item.id}
-                                    task = {item} 
-                                />
+                    return <TaskItem 
+                                key = {item.id}
+                                id = {item.id}
+                                task = {item} 
+                            />
                 })} 
             </ul>
         </div>

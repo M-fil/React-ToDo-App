@@ -4,12 +4,12 @@ import "./footer.css";
 
 import FontAwesome from 'react-fontawesome';
 
-function Icon(props) {
+function Icon({ name, link, iconType }) {
     return (
         <div className="icon-box" >
-            <a href={props.link} target="_blank" rel="noopener noreferrer" className={`fa-stack fa-2x color-${props.iconType}`}>
+            <a href={link} target="_blank" rel="noopener noreferrer" className={`fa-stack fa-2x color-${iconType}`}>
                 <FontAwesome name="circle fa-stack-2x" />
-                <FontAwesome name={`${props.name} fa-stack-1x fa-inverse`} />
+                <FontAwesome name={`${name} fa-stack-1x fa-inverse`} />
             </a>
         </div>
     );

@@ -2,7 +2,7 @@ import React, { useContext }  from 'react'
 import { ThemeContext } from "../app/App";
 import ThemeChangeWindow from "./ThemeChangeWindow";
 
-function ToggleThemeButton(props) {
+function ToggleThemeButton({ showThemeChangeBlock, isSelected, isShown, chooseTheme, image1, image2, image3, image4, image5, image6, changeBackground, deleteBackgroundImage }) {
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
     const themeBackgroundColor = theme.backgroundColor;
@@ -14,7 +14,7 @@ function ToggleThemeButton(props) {
                 className = "simple-button radius"
                 data-testid='change-theme-button' 
                 type = "button" 
-                onClick = {props.showThemeChangeBlock}
+                onClick = {showThemeChangeBlock}
                 style = {{
                     backgroundColor: themeBackgroundColor,
                     color: themeColor,
@@ -25,19 +25,19 @@ function ToggleThemeButton(props) {
             </button>
 
             {
-                props.isShown 
+                isShown 
                     ? <ThemeChangeWindow 
-                        chooseTheme = {props.chooseTheme} 
-                        isSelected = {props.isSelected}
-                        changeBackground = {props.changeBackground}
-                        deleteBackgroundImage = {props.deleteBackgroundImage}
+                        chooseTheme = {chooseTheme} 
+                        isSelected = {isSelected}
+                        changeBackground = {changeBackground}
+                        deleteBackgroundImage = {deleteBackgroundImage}
                         
-                        image1 = {props.image1}
-                        image2 = {props.image2}
-                        image3 = {props.image3}
-                        image4 = {props.image4}
-                        image5 = {props.image5}
-                        image6 = {props.image6}
+                        image1 = {image1}
+                        image2 = {image2}
+                        image3 = {image3}
+                        image4 = {image4}
+                        image5 = {image5}
+                        image6 = {image6}
                         />
                     : null
             }

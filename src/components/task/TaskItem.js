@@ -7,9 +7,9 @@ import FontAwesome from 'react-fontawesome';
 
 // Redux
 import { connect } from 'react-redux';
-import { deleteTask, toggleTask, combineTasks } from '../../redux/tasks_types/tasksTypesActions';
+import { deleteTask } from '../../redux/tasks_types/tasksTypesActions';
 
-function TaskItem({ deleteTask, toggleTask, combineTasks, task }) {
+function TaskItem({ deleteTask, task }) {
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
     const borderColor = "1px solid " + theme.borderColor;
@@ -26,9 +26,7 @@ function TaskItem({ deleteTask, toggleTask, combineTasks, task }) {
             }}
         >
             <div className = "task-container-upper">   
-                <Checkbox 
-                    task = {task}
-                />
+                <Checkbox task = {task}/>
 
                 <span 
                     className = "task-text" 

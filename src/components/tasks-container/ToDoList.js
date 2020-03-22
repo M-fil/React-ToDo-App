@@ -9,7 +9,9 @@ function ToDoList ({ withSquares, commonList }) {
     return (
         <div data-testid='todo-list'>
             {
-                withSquares ? <SquaresContainer /> : <CommonListContainer commonList={commonList} />
+                withSquares 
+                    ? <SquaresContainer /> 
+                    : <CommonListContainer commonList={commonList} />
             }
         </div>
     );

@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { ThemeContext } from "../app/App";
 
-import FontAwesome from 'react-fontawesome';
+import ToDoForm from './ToDoForm';
+import ToggleFormButton from './ToggleFormButton';
 
-function LeftSideBlock(props) {
+function LeftSideBlock({ withSquares }) {
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
     const themeBackgroundColor = theme.backgroundColor;
@@ -22,37 +23,17 @@ function LeftSideBlock(props) {
                 borderBottom: borderColor,
             }}          
         >
-            <button 
-                className = "close-button"
-                type = "button"
-                onClick = {showTaskForm}
-                style = {{
-                    backgroundColor: themeBackgroundColor,
-                    color: themeColor,
-                }}
-            >
-                { isFormShown 
-                    ? <>
-                        <span>Close</span>     
-                        <FontAwesome name = "sort-up" />
-                      </>
-                    : <>
-                        <span>Open</span>
-                        <FontAwesome name = "sort-down" />
-                      </>
-                }
-            </button>
 
-            <h2 
-                id = "todo-title"
-                style = {{color: themeColor}}
-            >
+            <ToggleFormButton 
+                showTaskForm={showTaskForm} 
+                isFormShown={isFormShown} 
+            />
+            
+            <h2 id = "todo-title" style = {{color: themeColor}}>
                 ToDo App
             </h2>
 
-            {
-                isFormShown ? props.children : null
-            }
+            { isFormShown ? <ToDoForm withSquares = {withSquares} /> : null }
         </div>
     )
 }
