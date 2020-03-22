@@ -2,7 +2,8 @@ import {
     ADD_TASK, 
     DELETE_TASK, 
     TOGGLE_TASK, 
-    COMBINE_TASKS 
+    COMBINE_TASKS ,
+    SORT_TASKS
 } from './tasksTypesTypes';
 import shortid from 'shortid';
 
@@ -39,4 +40,11 @@ const combineTasks = () => {
     }
 }
 
-export { addTask, deleteTask, toggleTask, combineTasks };
+const sortTasks = (isDesc, importance = '') => {
+    return {
+        type: SORT_TASKS,
+        payload: { isDesc, importance },
+    }
+}
+
+export { addTask, deleteTask, toggleTask, combineTasks, sortTasks };

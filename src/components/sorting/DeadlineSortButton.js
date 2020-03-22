@@ -1,15 +1,13 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from "../app/App";
 import "./sort-button.css";
-import { connect } from 'react-redux';
 
-function DeadlineSortButton({sort, array, isDescSort, position}) {
+function DeadlineSortButton({ sort, array, isDescSort, position }) {
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
     const themeBackgroundColor = `${theme.backgroundColor}`;
     const borderColor = "1px solid " + theme.borderColor;
 
-    const list = Object.values(array);
     return (
         <button 
             className="deadline-sort-button"
@@ -21,14 +19,14 @@ function DeadlineSortButton({sort, array, isDescSort, position}) {
                 backgroundColor: themeBackgroundColor,
                 color: themeColor,
                 border: borderColor,
-                opacity: list.length > 1 ? 1 : 0.6,
-                transform: isDescSort && list.length > 1 ? "rotate(180deg)" : "rotate(360deg)",
+                opacity: array.length > 1 ? 1 : 0.6,
+                transform: isDescSort && array.length > 1 ? "rotate(180deg)" : "rotate(360deg)",
                 position: position,
             }}
         >
-            {list.length > 1 ? "↑" : "sort"}
+            {array.length > 1 ? "↑" : "sort"}
         </button>
     )
 }
 
-export default connect()(DeadlineSortButton);
+export default DeadlineSortButton;

@@ -2,12 +2,10 @@ import React, { useState, createContext, useEffect } from 'react';
 
 import ToDoForm from "../task-form/ToDoForm";
 import ToDoList from '../tasks-container/ToDoList';
-import useToDo from "../generic/useToDo";
 import ToggleThemeButton from "../app-theme/ToggleThemeButton";
 import LeftSideBlock from "../task-form/LeftSideBlock";
 import SwitchTasksListView from "../app-view/SwitchTasksListView";
 import DeadlineSortButton from "../sorting/DeadlineSortButton";
-import useDeadlineSort from "../sorting/useDeadlineSort";
 import Footer from '../footer/Footer';
 
 import themes from "../lib/themes";
@@ -15,12 +13,12 @@ import images from "../lib/images";
 
 // Redux
 import { connect } from 'react-redux';
-import { combineTasks } from '../../redux/tasks_types/tasksTypesActions';
+import { sortTasks, combineTasks } from '../../redux/tasks_types/tasksTypesActions';
 
 
 export const ThemeContext = createContext(themes.dark); 
 
-function App ({ combineTasks, commonTaskData }) {
+function App ({ sortTasks, combineTasks, commonList }) {
 
   const [withSquares, setWithSquares] = useState(true);
   const [isShown, setIsShown] = useState(false);
@@ -34,7 +32,6 @@ function App ({ combineTasks, commonTaskData }) {
 
   const changeListView = () => {
       setWithSquares(!withSquares);
-
       combineTasks();
   }
   
@@ -47,15 +44,14 @@ function App ({ combineTasks, commonTaskData }) {
     document.body.style.backgroundColor = typeOfTheme.backgroundColor;
     return () => document.body.style.backgroundColor = null;
   }, [typeOfTheme]);
-
-  const { sortSample, isDescSort, setIsDescSort } = useDeadlineSort();
   
+  const [isDescSort, setIsDescSort] = useState(false);
+
   const sortByDeadline = () => {
     setIsDescSort(!isDescSort);
-    sortSample(commonTaskData, isDescSort);
+    sortTasks(isDescSort, '')
   }
   
-
   const themeColor = typeOfTheme["color"];
   
   return (
@@ -63,7 +59,7 @@ function App ({ combineTasks, commonTaskData }) {
       <div className="root-container">
         <ThemeContext.Provider value = {typeOfTheme}>
           <SwitchTasksListView 
-            combineTasks = {changeListView}
+            changeListView = {changeListView}
           />
 
           <LeftSideBlock >
@@ -98,8 +94,8 @@ function App ({ combineTasks, commonTaskData }) {
               {
                 !withSquares ?            
                   <DeadlineSortButton 
-                    array = {commonTaskData} 
-                    sort = {sortByDeadline} 
+                    sort = {sortByDeadline}
+                    array = {commonList}
                     isDescSort = {isDescSort}
                     position = "relative"
                   /> 
@@ -109,6 +105,7 @@ function App ({ combineTasks, commonTaskData }) {
 
             <ToDoList 
               withSquares = {withSquares}
+              commonList = {commonList}
             />
           </div>
         </ThemeContext.Provider>
@@ -122,11 +119,12 @@ function App ({ combineTasks, commonTaskData }) {
 const mapState = (state) => {
   return {
     ...state,
-    commonTaskData: state.commonListk,
+    commonList: state.commonList,
   }
 }
 
 const mapDispatch = {
+  sortTasks,
   combineTasks,
 }
 

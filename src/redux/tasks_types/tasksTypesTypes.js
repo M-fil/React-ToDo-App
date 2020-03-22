@@ -3,9 +3,12 @@ const DELETE_TASK = 'DELETE_TASK';
 const TOGGLE_TASK = 'TOGGLE_TASK'; 
 const COMBINE_TASKS = 'COMBINE_TASKS';
 
+const SORT_TASKS = 'SORT_TASKS'; 
+
 export { 
     ADD_TASK, 
     DELETE_TASK,
     TOGGLE_TASK,
     COMBINE_TASKS,
+    SORT_TASKS,
 };

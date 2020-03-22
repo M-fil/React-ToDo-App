@@ -5,12 +5,17 @@ import { ThemeContext } from "../app/App";
 
 // Redux
 import { connect } from 'react-redux';
-import { toggleTask } from '../../redux/tasks_types/tasksTypesActions';
+import { toggleTask, combineTasks } from '../../redux/tasks_types/tasksTypesActions';
 
-function Checkbox({ toggleTask, task }) {
+function Checkbox({ toggleTask, combineTasks, task }) {
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
     const borderColor = "1px solid " + theme.borderColor;
+
+    const completeTask = () => {
+        toggleTask(task.id, task.importance);
+        combineTasks();
+    }
 
     return (
         <label className = "checkbox-container">
@@ -20,10 +25,10 @@ function Checkbox({ toggleTask, task }) {
                 type = "checkbox" 
                 style = {{color: themeColor}}
                 checked = {task.checked}
-                onChange = {() => toggleTask(task.id, task.importance)}
+                onChange = {completeTask}
             />
             <span 
-                className = "fake"
+                className = 'fake'
                 data-testid='fake'
                 style = {{border: borderColor}}
             >
@@ -32,24 +37,4 @@ function Checkbox({ toggleTask, task }) {
     )
 }
 
-const mapState = (state) => {
-    const { payload } = toggleTask();
-    console.log('PAYLOAD', payload)
-    let findedTask = null;
-
-    Object.values(state).forEach(tasks => {
-        tasks.forEach(task => {
-            if (task.id === payload.id) {
-                console.log("FIND ->", task)
-                findedTask = task;
-                return;
-            }
-        })
-    })
-
-    return {
-        isChecked: findedTask.checked
-    }
-}
-
-export default connect(null, { toggleTask })(Checkbox);
+export default connect(null, { toggleTask, combineTasks })(Checkbox);

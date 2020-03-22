@@ -1,12 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import "./switcher.css";
 import { ThemeContext } from "../app/App";
 
-// Redux
-import { connect } from 'react-redux';
-import { combineTasks } from '../../redux/tasks_types/tasksTypesActions';
-
-function SwitchTasksListView({ combineTasks }) {
+function SwitchTasksListView({ changeListView }) {
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
     const themeBackgroundColor = theme.backgroundColor;
@@ -25,7 +21,7 @@ function SwitchTasksListView({ combineTasks }) {
                 className = "switcher"
                 id='switcher'
                 type = "checkbox"  
-                onChange = {combineTasks} 
+                onChange = {changeListView} 
             />
             <label 
                 className="text"

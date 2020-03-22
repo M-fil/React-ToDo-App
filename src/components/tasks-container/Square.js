@@ -1,24 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import "./square.css"
 
 import { ThemeContext } from "../app/App";
 import TaskItem from "../task/TaskItem";
-import useDeadlineSort from "../sorting/useDeadlineSort";
 import DeadlineSortButton from "../sorting/DeadlineSortButton";
 
-function Square({ square, squareNumber, toggleTask }) {    
+import { connect } from 'react-redux';
+import { sortTasks } from '../../redux/tasks_types/tasksTypesActions';
+
+function Square({ square, squareNumber, sortTasks }) {    
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
     const themeBackgroundColor = theme.backgroundColor;
     const borderColor = "1px solid " + theme.borderColor;
 
-    const { sortSample, isDescSort, setIsDescSort } = useDeadlineSort();
-
+    const [isDescSort, setIsDescSort] = useState(false);
+  
     const sortByDeadline = () => {
-        setIsDescSort(!isDescSort);
-        sortSample(square, isDescSort);
+      setIsDescSort(!isDescSort);
+      sortTasks(isDescSort, squareNumber)
     }
+    
 
     return (
         <div 
@@ -38,16 +41,16 @@ function Square({ square, squareNumber, toggleTask }) {
 
             <h3 style = {{color: themeColor}}> {squareNumber} </h3>
             <ul className = "list"> 
-                {Object.values(square).map((item) => {
-                    return <TaskItem 
-                                key = {item.id}
-                                id = {item.id}
-                                task = {item} 
-                            />
+                {square.map((item) => {
+                        return <TaskItem 
+                                    key = {item.id}
+                                    id = {item.id}
+                                    task = {item} 
+                                />
                 })} 
             </ul>
         </div>
     )
 }
 
-export default (Square);
+export default connect(null, { sortTasks })(Square);

@@ -7,9 +7,9 @@ import FontAwesome from 'react-fontawesome';
 
 // Redux
 import { connect } from 'react-redux';
-import { deleteTask } from '../../redux/tasks_types/tasksTypesActions';
+import { deleteTask, toggleTask, combineTasks } from '../../redux/tasks_types/tasksTypesActions';
 
-function TaskItem({ deleteTask, task }) {
+function TaskItem({ deleteTask, toggleTask, combineTasks, task }) {
     const theme = useContext(ThemeContext);
     const themeColor = theme.color;
     const borderColor = "1px solid " + theme.borderColor;

@@ -5,7 +5,7 @@ import "./task-form.css";
 
 // Redux
 import { connect } from 'react-redux';
-import { addTask } from '../../redux/tasks_types/tasksTypesActions';
+import { addTask, combineTasks } from '../../redux/tasks_types/tasksTypesActions';
 
 const initialState = {
     text: '',
@@ -34,7 +34,7 @@ const reducer = (state, action) => {
     }
 }
 
-function ToDoForm ({ addTask, withSquares }) {
+function ToDoForm ({ addTask, combineTasks, withSquares }) {
     const textRef = useRef();
     const deadlineRef = useRef();
 
@@ -63,6 +63,8 @@ function ToDoForm ({ addTask, withSquares }) {
 
         textRef.current.value = '';
         deadlineRef.current.value = '';
+        
+        combineTasks();
     }
 
     return (
@@ -143,4 +145,4 @@ function ToDoForm ({ addTask, withSquares }) {
     );
 }
 
-export default connect(null, { addTask })(ToDoForm);
+export default connect(null, { addTask, combineTasks })(ToDoForm);

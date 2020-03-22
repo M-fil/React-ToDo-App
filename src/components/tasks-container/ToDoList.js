@@ -1,84 +1,18 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import "./to-do-list.css";
 
-import Square from "./Square";
-import TaskItem from "../task/TaskItem";
-import { ThemeContext } from "../app/App";
+import SquaresContainer from './SquaresContainer';
+import CommonListContainer from './CommonListContainer';
 
-import { connect } from 'react-redux';
-
-function ToDoList ({ tasks1, tasks2, tasks3, tasks4, commonList, withSquares }) {
-    const theme = useContext(ThemeContext);
-    const themeColor = theme.color;
-    const themeBackgroundColor = `${theme.backgroundColor}`;
-    const borderColor = "1px solid " + theme.borderColor;
-
+function ToDoList ({ withSquares, commonList }) {
     return (
         <div data-testid='todo-list'>
             {
-                withSquares ?
-                    <div id="main">
-                        <Square 
-                            square = {tasks1} 
-                            squareNumber = "I - Urgent" 
-                        />
-                        <Square 
-                            square = {tasks2} 
-                            squareNumber = "II - Important"
-                        />
-                        <Square 
-                            square = {tasks3} 
-                            squareNumber = "III - For Later"
-                        />
-                        <Square 
-                            square = {tasks4} 
-                            squareNumber = "IV - Delegate to Another"
-                        />
-                    </div>
-                : 
-                <div 
-                    className="common-tasks-list-container"
-                    style = {{
-                        backgroundColor: themeBackgroundColor,
-                        border: borderColor,
-                        textAlign: commonList.length === 0 ? "center" : "left",
-                    }}
-                >
-                    {
-                        commonList.length === 0 
-                            ? 
-                            <span style = {{color: themeColor}}>
-                                No any tasks.
-                            </span>
-                            :
-                            <ul>
-                                {
-                                    Object.values(commonList).map((item) => {
-                                        return <TaskItem 
-                                                    key = {item.id}
-                                                    id = {item.id}
-                                                    task = {item} 
-                                                />
-                                    })
-                                }
-                            </ul>
-                    }   
-                </div>
+                withSquares ? <SquaresContainer /> : <CommonListContainer commonList={commonList} />
             }
         </div>
     );
 }
 
-const mapState = (state) => {
-    return {
-        tasks1: { ...state.tasks1 },
-        tasks2: { ...state.tasks2 },
-        tasks3: { ...state.tasks3 },
-        tasks4: { ...state.tasks4 },
-
-        commonList: state.commonList,
-    }
-}
-
-export default connect(mapState)(ToDoList);
+export default ToDoList;
