@@ -34,6 +34,12 @@ function App ({ sortTasks, combineTasks, commonList }) {
       combineTasks();
   }
   
+  const [isDescSort, setIsDescSort] = useState(false);
+  const sortByDeadline = () => {
+    setIsDescSort(!isDescSort);
+    sortTasks(isDescSort, '')
+  }
+  
   useEffect(() => {
       document.body.style.backgroundImage = "url('" + backgroundImage + "')";
       return () => document.body.style.backgroundImage = null;
@@ -43,14 +49,7 @@ function App ({ sortTasks, combineTasks, commonList }) {
     document.body.style.backgroundColor = typeOfTheme.backgroundColor;
     return () => document.body.style.backgroundColor = null;
   }, [typeOfTheme]);
-  
-  const [isDescSort, setIsDescSort] = useState(false);
 
-  const sortByDeadline = () => {
-    setIsDescSort(!isDescSort);
-    sortTasks(isDescSort, '')
-  }
-  
   const themeColor = typeOfTheme["color"];
   
   return (
