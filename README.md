@@ -3,24 +3,25 @@
 ***
 
 #### ⭐️**Technologies in usage:** 
-- **React Library** (Hooks Usage)
-- **shortid**
+- **[React Library](https://ru.reactjs.org/)** (Hooks Usage)
+- **[React Redux Library](https://react-redux.js.org/)**
+- **[shortid](https://www.npmjs.com/package/shortid)**
 
 #### 🆕**New features after update:**
-- adding deadlines for tasks
-- sort tasks by deadlines
-- changing the background-image
+- Adding deadlines for tasks
+- Sort tasks by deadlines
+- Changing the background-image
 
 #### 👍**Main functionality:**
-- switching the theme
-- closing the panel for the new task creation
-- deleting tasks
-- marking the completed task with a tick
+- Switching the theme
+- Closing the panel for the new task creation
+- Deleting tasks
+- Marking the completed task with a tick
 
-## ▶️How do I launch the app?
+## ▶️How can You launch the app?
 1) You can **clone** or **download a zip** from the GitHub page of the repository **React-ToDo-App**. 
 2) **Open the terminal** in any IDE or PowerShell.
-3) Then you need **to go to the downloaded folder**. (React-ToDo-App folder)
+3) Then you need **to go to the downloaded folder**. (*./React-ToDo-App* folder)
 4) Type in the terminal: **npm install**. (This function will download **/node_modules** folder in your root directory which allow you to run the project.)
 5) Type in the terminal: **npm start**
 
